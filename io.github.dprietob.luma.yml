@@ -38,6 +38,7 @@ modules:
   - name: libogg
     buildsystem: cmake-ninja
     config-opts:
+      - -DBUILD_SHARED_LIBS=ON
       - -DBUILD_TESTING=OFF
     sources:
       - type: archive
@@ -47,6 +48,7 @@ modules:
   - name: libvorbis
     buildsystem: cmake-ninja
     config-opts:
+      - -DBUILD_SHARED_LIBS=ON
       - -DBUILD_TESTING=OFF
     sources:
       - type: archive
@@ -56,6 +58,7 @@ modules:
   - name: flac
     buildsystem: cmake-ninja
     config-opts:
+      - -DBUILD_SHARED_LIBS=ON
       - -DBUILD_TESTING=OFF
       - -DBUILD_PROGRAMS=OFF
       - -DBUILD_EXAMPLES=OFF
@@ -70,6 +73,7 @@ modules:
   - name: opus
     buildsystem: cmake-ninja
     config-opts:
+      - -DBUILD_SHARED_LIBS=ON
       - -DBUILD_TESTING=OFF
     sources:
       - type: archive
@@ -79,6 +83,7 @@ modules:
   - name: libsndfile
     buildsystem: cmake-ninja
     config-opts:
+      - -DBUILD_SHARED_LIBS=ON
       - -DBUILD_TESTING=OFF
       - -DBUILD_PROGRAMS=OFF
       - -DBUILD_EXAMPLES=OFF
@@ -128,4 +133,4 @@ modules:
       - type: git
         url: https://github.com/dprietob/luma.git
         tag: "1.0.0"
-        commit: 41033be97d40268243b30059a73c130adeff524c
+        commit: dc5dcd9dbf285a903ca8ea9e20dd4e11a07b27d0
