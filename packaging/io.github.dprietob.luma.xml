@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-luma">
+    <comment>Luma project</comment>
+    <comment xml:lang="es">Proyecto de Luma</comment>
+    <glob pattern="*.luma"/>
+    <icon name="io.github.dprietob.luma"/>
+    <generic-icon name="audio-x-generic"/>
+  </mime-type>
+</mime-info>

@@ -1,0 +1,976 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Language: es_ES\n"
+"X-Qt-Contexts: true\n"
+
+#: ../src/engine/AppSettings.cpp:23
+msgctxt "AppSettings|"
+msgid "New project"
+msgstr "Nuevo proyecto"
+
+#: ../src/engine/AppSettings.cpp:25
+msgctxt "AppSettings|"
+msgid "Open project"
+msgstr "Abrir proyecto"
+
+#: ../src/engine/AppSettings.cpp:28
+msgctxt "AppSettings|"
+msgid "Add track to tracklist"
+msgstr "Añadir pista a la lista"
+
+#: ../src/engine/AppSettings.cpp:30
+msgctxt "AppSettings|"
+msgid "New flow"
+msgstr "Nuevo flujo"
+
+#: ../src/engine/AppSettings.cpp:33
+msgctxt "AppSettings|"
+msgid "Audio output devices"
+msgstr "Dispositivos de salida de audio"
+
+#: ../src/engine/AppSettings.cpp:36
+msgctxt "AppSettings|"
+msgid "Channel count"
+msgstr "Número de canales"
+
+#: ../src/engine/AppSettings.cpp:37
+msgctxt "AppSettings|"
+msgid "Reorder channels"
+msgstr "Reordenar canales"
+
+#: ../src/engine/AppSettings.cpp:39
+msgctxt "AppSettings|"
+msgid "Grid mode"
+msgstr "Modo cuadrícula"
+
+#: ../src/engine/AppSettings.cpp:42
+msgctxt "AppSettings|"
+msgid "Master to minimum"
+msgstr "Master al mínimo"
+
+#: ../src/engine/AppSettings.cpp:44
+msgctxt "AppSettings|"
+msgid "Panic"
+msgstr "Pánico"
+
+#: ../src/engine/AppSettings.cpp:46
+msgctxt "AppSettings|"
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: ../src/engine/AppSettings.cpp:51
+#, qt-format
+msgctxt "AppSettings|"
+msgid "Select preset %1"
+msgstr "Seleccionar preset %1"
+
+#: ../src/engine/AudioChannel.cpp:162
+#, qt-format
+msgctxt "AudioChannel|"
+msgid "File not found: %1"
+msgstr "Archivo no encontrado: %1"
+
+#: ../src/engine/AudioChannel.cpp:174
+#, qt-format
+msgctxt "AudioChannel|"
+msgid "Could not load file: %1"
+msgstr "No se pudo cargar el archivo: %1"
+
+#: ../src/engine/AudioEngine.cpp:139
+#, qt-format
+msgctxt "AudioEngine|"
+msgid "Only local files are supported: %1"
+msgstr "Solo se admiten archivos locales: %1"
+
+#: ../src/qml/components/options/AudioOutputDialog.qml:29
+msgctxt "AudioOutputDialog|"
+msgid "Audio output"
+msgstr "Salida de audio"
+
+#: ../src/qml/components/options/AudioOutputDialog.qml:37
+msgctxt "AudioOutputDialog|"
+msgid "Main"
+msgstr "Principal"
+
+#: ../src/qml/components/options/AudioOutputDialog.qml:43
+msgctxt "AudioOutputDialog|"
+msgid "Aux"
+msgstr "Auxiliar"
+
+#: ../src/qml/components/options/AudioOutputDialog.qml:68
+#: ../src/qml/components/options/AudioOutputDialog.qml:75
+msgctxt "AudioOutputDialog|"
+msgid "System default"
+msgstr "Predeterminado del sistema"
+
+#: ../src/qml/components/options/ChannelCountDialog.qml:46
+msgctxt "ChannelCountDialog|"
+msgid "Number of channels"
+msgstr "Número de canales"
+
+#: ../src/qml/components/options/ChannelCountDialog.qml:101
+msgctxt "ChannelCountDialog|"
+msgid "Between 1 and 40 · applies to every preset"
+msgstr "Entre 1 y 40 · afecta a todos los presets"
+
+#: ../src/qml/components/options/ChannelCountDialog.qml:118
+msgctxt "ChannelCountDialog|"
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ../src/qml/components/options/ChannelCountDialog.qml:112
+msgctxt "ChannelCountDialog|"
+msgid "Apply"
+msgstr "Aplicar"
+
+#: ../src/qml/components/options/ChannelCountDialog.qml:127
+msgctxt "ChannelCountDialog|"
+msgid "Reduce channels"
+msgstr "Reducir canales"
+
+#: ../src/qml/components/options/ChannelCountDialog.qml:128
+#, qt-format
+msgctxt "ChannelCountDialog|"
+msgid ""
+"The last %1 channel(s) will be removed and their configuration and track "
+"binding will be lost. Continue?"
+msgstr ""
+"Se quitarán los últimos %1 canal(es) y se perderá su configuración y su "
+"vinculación de pista. ¿Continuar?"
+
+#: ../src/qml/components/channels/ChannelStrip.qml:274
+#, qt-format
+msgctxt "ChannelStrip|"
+msgid "Channel %1 color"
+msgstr "Color del canal %1"
+
+#: ../src/qml/components/channels/ChannelStrip.qml:299
+#, qt-format
+msgctxt "ChannelStrip|"
+msgid "Bind file to channel %1"
+msgstr "Vincular archivo al canal %1"
+
+#: ../src/qml/components/channels/ChannelStrip.qml:301
+msgctxt "ChannelStrip|"
+msgid "Audio (*.wav *.mp3 *.ogg *.flac)"
+msgstr ""
+
+#: ../src/qml/components/channels/ChannelStrip.qml:301
+msgctxt "ChannelStrip|"
+msgid "All files (*)"
+msgstr "Todos los archivos (*)"
+
+#: ../src/qml/components/channels/ChannelStrip.qml:308
+msgctxt "ChannelStrip|"
+msgid "Bind track…"
+msgstr "Vincular pista…"
+
+#: ../src/qml/components/channels/ChannelStrip.qml:312
+msgctxt "ChannelStrip|"
+msgid "Unbind channel"
+msgstr "Desvincular canal"
+
+#: ../src/qml/components/channels/ChannelStrip.qml:318
+msgctxt "ChannelStrip|"
+msgid "Set color…"
+msgstr "Establecer color…"
+
+#: ../src/qml/components/channels/ChannelStrip.qml:322
+msgctxt "ChannelStrip|"
+msgid "Reset color"
+msgstr "Restablecer color"
+
+#: ../src/qml/components/atomic/ConfirmDialog.qml:64
+msgctxt "ConfirmDialog|"
+msgid "No"
+msgstr "No"
+
+#: ../src/qml/components/atomic/ConfirmDialog.qml:70
+msgctxt "ConfirmDialog|"
+msgid "Yes"
+msgstr "Sí"
+
+#: ../src/qml/components/channels/EqDialog.qml:36
+#, qt-format
+msgctxt "EqDialog|"
+msgid "Equalizer — %1"
+msgstr "Ecualizador — %1"
+
+#: ../src/qml/components/channels/FadeButtons.qml:35
+msgctxt "FadeButtons|"
+msgid "Fade duration (s)"
+msgstr "Duración del fade (s)"
+
+#: ../src/qml/style/FadeModes.qml:7
+msgctxt "FadeModes|"
+msgid "Linear"
+msgstr "Lineal"
+
+#: ../src/qml/style/FadeModes.qml:11
+msgctxt "FadeModes|"
+msgid "Ease"
+msgstr "Suave"
+
+#: ../src/qml/style/FadeModes.qml:15
+msgctxt "FadeModes|"
+msgid "Ease In"
+msgstr "Entrada suave"
+
+#: ../src/qml/style/FadeModes.qml:19
+msgctxt "FadeModes|"
+msgid "Ease Out"
+msgstr "Salida suave"
+
+#: ../src/qml/style/FadeModes.qml:23
+msgctxt "FadeModes|"
+msgid "Ease In-Out"
+msgstr "Entrada-salida suave"
+
+#: ../src/qml/style/FadeModes.qml:27
+msgctxt "FadeModes|"
+msgid "Cubic Bezier"
+msgstr "Bézier cúbica"
+
+#: ../src/qml/components/flows/FlowEdgeConfigDialog.qml:74
+msgctxt "FlowEdgeConfigDialog|"
+msgid "Link settings"
+msgstr "Ajustes del enlace"
+
+#: ../src/qml/components/flows/FlowEdgeConfigDialog.qml:82
+msgctxt "FlowEdgeConfigDialog|"
+msgid "Trigger"
+msgstr "Disparador"
+
+#: ../src/qml/components/flows/FlowEdgeConfigDialog.qml:93
+msgctxt "FlowEdgeConfigDialog|"
+msgid "Immediate"
+msgstr "Inmediato"
+
+#: ../src/qml/components/flows/FlowEdgeConfigDialog.qml:98
+msgctxt "FlowEdgeConfigDialog|"
+msgid "After time"
+msgstr "Tras tiempo"
+
+#: ../src/qml/components/flows/FlowEdgeConfigDialog.qml:103
+msgctxt "FlowEdgeConfigDialog|"
+msgid "On finish"
+msgstr "Al terminar"
+
+#: ../src/qml/components/flows/FlowEdgeConfigDialog.qml:138
+msgctxt "FlowEdgeConfigDialog|"
+msgid "seconds after the source starts."
+msgstr "segundos después de que empiece el origen."
+
+#: ../src/qml/components/flows/FlowEdgeConfigDialog.qml:159
+msgctxt "FlowEdgeConfigDialog|"
+msgid "None"
+msgstr "Ninguno"
+
+#: ../src/qml/components/flows/FlowEdgeConfigDialog.qml:164
+msgctxt "FlowEdgeConfigDialog|"
+msgid "Fade out"
+msgstr "Fade out"
+
+#: ../src/qml/components/flows/FlowEdgeConfigDialog.qml:169
+msgctxt "FlowEdgeConfigDialog|"
+msgid "Stop"
+msgstr "Detener"
+
+#: ../src/qml/components/flows/FlowEdgeConfigDialog.qml:187
+msgctxt "FlowEdgeConfigDialog|"
+msgid "Play"
+msgstr "Reproducir"
+
+#: ../src/qml/components/flows/FlowEdgeConfigDialog.qml:192
+msgctxt "FlowEdgeConfigDialog|"
+msgid "Fade in"
+msgstr "Fade in"
+
+#: ../src/qml/components/flows/FlowEdgeConfigDialog.qml:204
+msgctxt "FlowEdgeConfigDialog|"
+msgid "Delete"
+msgstr "Eliminar"
+
+#: ../src/qml/components/flows/FlowEdgeConfigDialog.qml:115
+msgctxt "FlowEdgeConfigDialog|"
+msgid "After"
+msgstr "Tras"
+
+#: ../src/qml/components/flows/FlowEdgeConfigDialog.qml:147
+msgctxt "FlowEdgeConfigDialog|"
+msgid "Action on origin"
+msgstr "Acción en el origen"
+
+#: ../src/qml/components/flows/FlowEdgeConfigDialog.qml:176
+msgctxt "FlowEdgeConfigDialog|"
+msgid "Action on target"
+msgstr "Acción en el destino"
+
+#: ../src/qml/components/flows/FlowEditorDialog.qml:362
+#, qt-format
+msgctxt "FlowEditorDialog|"
+msgid "Flow editor — %1"
+msgstr "Editor de flujo — %1"
+
+#: ../src/qml/components/flows/FlowEditorDialog.qml:371
+msgctxt "FlowEditorDialog|"
+msgid "Preset"
+msgstr ""
+
+#: ../src/qml/components/flows/FlowEditorDialog.qml:386
+#, qt-format
+msgctxt "FlowEditorDialog|"
+msgid "P%1"
+msgstr ""
+
+#: ../src/qml/components/flows/FlowEditorDialog.qml:403
+msgctxt "FlowEditorDialog|"
+msgid "Save"
+msgstr "Guardar"
+
+#: ../src/qml/components/flows/FlowEditorDialog.qml:409
+#, fuzzy
+msgctxt "FlowEditorDialog|"
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ../src/qml/components/flows/FlowEditorDialog.qml:433
+msgctxt "FlowEditorDialog|"
+msgid "Channels"
+msgstr "Canales"
+
+#: ../src/qml/components/flows/FlowEditorDialog.qml:442
+msgctxt "FlowEditorDialog|"
+msgid "Click a channel to add it to the canvas."
+msgstr "Haz clic en un canal para añadirlo al lienzo."
+
+#: ../src/qml/components/flows/FlowEditorDialog.qml:451
+msgctxt "FlowEditorDialog|"
+msgid "Scroll or drag the canvas to pan."
+msgstr "Desplázate o arrastra el lienzo para moverte."
+
+#: ../src/qml/components/flows/FlowEditorDialog.qml:682
+msgctxt "FlowEditorDialog|"
+msgid ""
+"Drag channels here and connect them\n"
+"from the start point."
+msgstr ""
+"Arrastra canales aquí y conéctalos\n"
+"desde el punto de inicio."
+
+#: ../src/qml/components/flows/FlowEditorDialog.qml:589
+msgctxt "FlowEditorDialog|"
+msgid "START"
+msgstr "INICIO"
+
+#: ../src/qml/components/FlowList.qml:33
+msgctxt "FlowList|"
+msgid "Flow list"
+msgstr "Lista de flujos"
+
+#: ../src/qml/components/FlowList.qml:45
+msgctxt "FlowList|"
+msgid "New flow"
+msgstr "Nuevo flujo"
+
+#: ../src/qml/components/FlowList.qml:78
+msgctxt "FlowList|"
+msgid ""
+"No flows yet.\n"
+"Press “New flow” to create one."
+msgstr ""
+"Aún no hay flujos.\n"
+"Pulsa “Nuevo flujo” para crear uno."
+
+#: ../src/qml/components/FlowList.qml:174
+msgctxt "FlowList|"
+msgid "Stop"
+msgstr "Detener"
+
+#: ../src/qml/components/FlowList.qml:174
+msgctxt "FlowList|"
+msgid "Run"
+msgstr "Ejecutar"
+
+#: ../src/qml/components/FlowList.qml:189
+msgctxt "FlowList|"
+msgid "Edit"
+msgstr "Editar"
+
+#: ../src/qml/components/FlowList.qml:196
+msgctxt "FlowList|"
+msgid "Delete"
+msgstr "Eliminar"
+
+#: ../src/qml/components/FlowList.qml:212
+msgctxt "FlowList|"
+msgid "Delete flow"
+msgstr "Eliminar flujo"
+
+#: ../src/qml/components/FlowList.qml:213
+#, qt-format
+msgctxt "FlowList|"
+msgid "Delete the flow “%1”? This cannot be undone."
+msgstr "¿Eliminar el flujo “%1”? Esta acción no se puede deshacer."
+
+#: ../src/qml/components/FlowList.qml:166
+#, qt-format
+msgctxt "FlowList|"
+msgid "P%1"
+msgstr ""
+
+#: ../src/qml/components/flows/FlowNodeConfigDialog.qml:85
+#, qt-format
+msgctxt "FlowNodeConfigDialog|"
+msgid "Node — %1"
+msgstr "Nodo — %1"
+
+#: ../src/qml/components/flows/FlowNodeConfigDialog.qml:94
+msgctxt "FlowNodeConfigDialog|"
+msgid "Balance"
+msgstr "Balance"
+
+#: ../src/qml/components/flows/FlowNodeConfigDialog.qml:104
+msgctxt "FlowNodeConfigDialog|"
+msgid "Initial volume"
+msgstr "Volumen inicial"
+
+#: ../src/qml/components/flows/FlowNodeConfigDialog.qml:112
+msgctxt "FlowNodeConfigDialog|"
+msgid "Fade-in max"
+msgstr "Máx. de fade in"
+
+#: ../src/qml/components/flows/FlowNodeConfigDialog.qml:120
+msgctxt "FlowNodeConfigDialog|"
+msgid "Fade-out min"
+msgstr "Mín. de fade out"
+
+#: ../src/qml/components/flows/FlowNodeConfigDialog.qml:133
+msgctxt "FlowNodeConfigDialog|"
+msgid "Fade duration"
+msgstr "Duración del fade"
+
+#: ../src/qml/components/flows/FlowNodeConfigDialog.qml:157
+msgctxt "FlowNodeConfigDialog|"
+msgid "seconds"
+msgstr "segundos"
+
+#: ../src/qml/components/flows/FlowNodeConfigDialog.qml:294
+msgctxt "FlowNodeConfigDialog|"
+msgid "Save"
+msgstr "Guardar"
+
+#: ../src/qml/components/flows/FlowNodeConfigDialog.qml:301
+#, fuzzy
+msgctxt "FlowNodeConfigDialog|"
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ../src/qml/components/flows/FlowNodeConfigDialog.qml:175
+msgctxt "FlowNodeConfigDialog|"
+msgid "Fade mode"
+msgstr "Modo de fade"
+
+#: ../src/qml/components/flows/FlowNodeConfigDialog.qml:211
+msgctxt "FlowNodeConfigDialog|"
+msgid "Start position"
+msgstr "Posición inicial"
+
+#: ../src/qml/components/flows/FlowNodeConfigDialog.qml:256
+msgctxt "FlowNodeConfigDialog|"
+msgid "min:sec"
+msgstr "min:seg"
+
+#: ../src/qml/components/channels/FxDialog.qml:32
+#, qt-format
+msgctxt "FxDialog|"
+msgid "Effects — %1"
+msgstr "Efectos — %1"
+
+#: ../src/qml/components/channels/FxDialog.qml:48
+msgctxt "FxDialog|"
+msgid "Reverb"
+msgstr ""
+
+#: ../src/qml/components/channels/FxDialog.qml:57
+msgctxt "FxDialog|"
+msgid "Room"
+msgstr "Sala"
+
+#: ../src/qml/components/channels/FxDialog.qml:62
+msgctxt "FxDialog|"
+msgid "Damping"
+msgstr "Amortiguación"
+
+#: ../src/qml/components/channels/FxDialog.qml:67
+#: ../src/qml/components/channels/FxDialog.qml:106
+#: ../src/qml/components/channels/FxDialog.qml:137
+msgctxt "FxDialog|"
+msgid "Mix"
+msgstr ""
+
+#: ../src/qml/components/channels/FxDialog.qml:80
+msgctxt "FxDialog|"
+msgid "Delay"
+msgstr ""
+
+#: ../src/qml/components/channels/FxDialog.qml:89
+msgctxt "FxDialog|"
+msgid "Time"
+msgstr "Tiempo"
+
+#: ../src/qml/components/channels/FxDialog.qml:99
+msgctxt "FxDialog|"
+msgid "Feedback"
+msgstr ""
+
+#: ../src/qml/components/channels/FxDialog.qml:119
+msgctxt "FxDialog|"
+msgid "Distortion"
+msgstr ""
+
+#: ../src/qml/components/channels/FxDialog.qml:128
+msgctxt "FxDialog|"
+msgid "Drive"
+msgstr ""
+
+#: ../src/qml/components/channels/FxDialog.qml:150
+msgctxt "FxDialog|"
+msgid "Pitch"
+msgstr ""
+
+#: ../src/qml/components/channels/FxDialog.qml:159
+msgctxt "FxDialog|"
+msgid "Semitones"
+msgstr "Semitonos"
+
+#: ../src/qml/components/channels/FxDialog.qml:177
+msgctxt "FxDialog|"
+msgid "Speed"
+msgstr ""
+
+#: ../src/qml/components/channels/FxDialog.qml:186
+msgctxt "FxDialog|"
+msgid "Tempo"
+msgstr ""
+
+#: ../src/qml/Main.qml:24
+msgctxt "Main|"
+msgid "Luma"
+msgstr ""
+
+#: ../src/qml/Main.qml:92
+msgctxt "Main|"
+msgid "Open project"
+msgstr "Abrir proyecto"
+
+#: ../src/qml/Main.qml:93
+msgctxt "Main|"
+msgid "Luma project (*.luma)"
+msgstr "Proyecto de Luma (*.luma)"
+
+#: ../src/qml/Main.qml:99
+msgctxt "Main|"
+msgid "Choose location"
+msgstr "Elegir ubicación"
+
+#: ../src/qml/Main.qml:127
+msgctxt "Main|"
+msgid "New project"
+msgstr "Nuevo proyecto"
+
+#: ../src/qml/Main.qml:140
+msgctxt "Main|"
+msgid "Name"
+msgstr "Nombre"
+
+#: ../src/qml/Main.qml:163
+msgctxt "Main|"
+msgid "Location"
+msgstr "Ubicación"
+
+#: ../src/qml/Main.qml:172
+msgctxt "Main|"
+msgid "(choose a folder)"
+msgstr "(elige una carpeta)"
+
+#: ../src/qml/Main.qml:180
+msgctxt "Main|"
+msgid "Choose..."
+msgstr "Elegir..."
+
+#: ../src/qml/Main.qml:194
+msgctxt "Main|"
+msgid "Create"
+msgstr "Crear"
+
+#: ../src/qml/Main.qml:203
+#, fuzzy
+msgctxt "Main|"
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ../src/qml/Main.qml:257
+msgctxt "Main|"
+msgid "Loading preset…"
+msgstr "Cargando preset…"
+
+#: ../src/qml/components/toolbar/PanicButton.qml:5
+msgctxt "PanicButton|"
+msgid "PANIC"
+msgstr "PÁNICO"
+
+#: ../src/engine/backend/PortAudioBackend.cpp:44
+#, qt-format
+msgctxt "PortAudioBackend|"
+msgid "Could not initialize audio: %1"
+msgstr "No se pudo inicializar el audio: %1"
+
+#: ../src/engine/backend/PortAudioBackend.cpp:85
+msgctxt "PortAudioBackend|"
+msgid "No audio output device available."
+msgstr "No hay ningún dispositivo de salida de audio disponible."
+
+#: ../src/engine/backend/PortAudioBackend.cpp:104
+#, qt-format
+msgctxt "PortAudioBackend|"
+msgid "Could not open audio stream: %1"
+msgstr "No se pudo abrir el flujo de audio: %1"
+
+#: ../src/qml/components/options/PreferencesDialog.qml:33
+msgctxt "PreferencesDialog|"
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: ../src/qml/components/options/PreferencesDialog.qml:47
+msgctxt "PreferencesDialog|"
+msgid "Open the last project on startup"
+msgstr "Abrir el último proyecto al iniciar"
+
+#: ../src/qml/components/options/PreferencesDialog.qml:74
+msgctxt "PreferencesDialog|"
+msgid "Language"
+msgstr "Idioma"
+
+#: ../src/qml/components/options/PreferencesDialog.qml:81
+msgctxt "PreferencesDialog|"
+msgid "Applied after restart."
+msgstr "Se aplica tras reiniciar."
+
+#: ../src/qml/components/options/PreferencesDialog.qml:122
+msgctxt "PreferencesDialog|"
+msgid "Audio cache size"
+msgstr "Tamaño de la caché de audio"
+
+#: ../src/qml/components/options/PreferencesDialog.qml:186
+msgctxt "PreferencesDialog|"
+msgid "Warming..."
+msgstr "Recalentando..."
+
+#: ../src/qml/components/options/PreferencesDialog.qml:186
+msgctxt "PreferencesDialog|"
+msgid "Rewarm"
+msgstr "Recalentar"
+
+#: ../src/qml/components/options/PreferencesDialog.qml:249
+msgctxt "PreferencesDialog|"
+msgid "Press keys…"
+msgstr "Pulsa teclas…"
+
+#: ../src/qml/components/options/PreferencesDialog.qml:163
+msgctxt "PreferencesDialog|"
+msgid "Rewarm current project cache"
+msgstr "Recalentar la caché del proyecto actual"
+
+#: ../src/qml/components/options/PreferencesDialog.qml:170
+msgctxt "PreferencesDialog|"
+msgid "Decodes all project tracks into memory now."
+msgstr "Decodifica ahora todas las pistas del proyecto en memoria."
+
+#: ../src/qml/components/options/PreferencesDialog.qml:200
+msgctxt "PreferencesDialog|"
+msgid "Keyboard shortcuts"
+msgstr "Atajos de teclado"
+
+#: ../src/qml/components/presets/PresetButton.qml:11
+#, qt-format
+msgctxt "PresetButton|"
+msgid "P%1"
+msgstr ""
+
+#: ../src/qml/components/presets/PresetDialog.qml:5
+msgctxt "PresetDialog|"
+msgid "Change preset"
+msgstr "Cambiar preset"
+
+#: ../src/qml/components/presets/PresetDialog.qml:6
+#, qt-format
+msgctxt "PresetDialog|"
+msgid "Switch to preset %1? Current playback will stop."
+msgstr "¿Cambiar al preset %1? La reproducción actual se detendrá."
+
+#: ../src/qml/components/channels/ProgressDialog.qml:45
+#, qt-format
+msgctxt "ProgressDialog|"
+msgid "Track — %1"
+msgstr "Pista — %1"
+
+#: ../src/qml/components/channels/ProgressDialog.qml:58
+#, qt-format
+msgctxt "ProgressDialog|"
+msgid "Duration: %1"
+msgstr "Duración: %1"
+
+#: ../src/qml/components/channels/ProgressDialog.qml:64
+#, qt-format
+msgctxt "ProgressDialog|"
+msgid "Position: %1"
+msgstr "Posición: %1"
+
+#: ../src/qml/components/channels/ProgressDialog.qml:74
+#, qt-format
+msgctxt "ProgressDialog|"
+msgid "Region: %1"
+msgstr "Región: %1"
+
+#: ../src/qml/components/channels/ProgressDialog.qml:197
+msgctxt "ProgressDialog|"
+msgid "Clear start"
+msgstr "Borrar inicio"
+
+#: ../src/qml/components/channels/ProgressDialog.qml:203
+msgctxt "ProgressDialog|"
+msgid "Clear end"
+msgstr "Borrar fin"
+
+#: ../src/engine/ProjectManager.cpp:73
+msgctxt "ProjectManager|"
+msgid "A project name and location are required."
+msgstr "Se requieren un nombre y una ubicación de proyecto."
+
+#: ../src/engine/ProjectManager.cpp:84
+#, qt-format
+msgctxt "ProjectManager|"
+msgid "A project already exists at: %1"
+msgstr "Ya existe un proyecto en: %1"
+
+#: ../src/engine/ProjectManager.cpp:88
+#, qt-format
+msgctxt "ProjectManager|"
+msgid "Could not create the project directory: %1"
+msgstr "No se pudo crear el directorio del proyecto: %1"
+
+#: ../src/engine/ProjectManager.cpp:105
+msgctxt "ProjectManager|"
+msgid "Only local locations are supported."
+msgstr "Solo se admiten ubicaciones locales."
+
+#: ../src/engine/ProjectManager.cpp:115
+#, qt-format
+msgctxt "ProjectManager|"
+msgid "Project not found: %1"
+msgstr "Proyecto no encontrado: %1"
+
+#: ../src/engine/ProjectManager.cpp:124
+#, qt-format
+msgctxt "ProjectManager|"
+msgid "Could not open the project: %1"
+msgstr "No se pudo abrir el proyecto: %1"
+
+#: ../src/engine/ProjectManager.cpp:139
+msgctxt "ProjectManager|"
+msgid "Only local files are supported."
+msgstr "Solo se admiten archivos locales."
+
+#: ../src/engine/SessionManager.cpp:173
+#, qt-format
+msgctxt "SessionManager|"
+msgid "Could not create the configuration directory: %1"
+msgstr "No se pudo crear el directorio de configuración: %1"
+
+#: ../src/engine/SessionManager.cpp:181
+#, qt-format
+msgctxt "SessionManager|"
+msgid "Could not write the session: %1"
+msgstr "No se pudo escribir la sesión: %1"
+
+#: ../src/engine/SessionManager.cpp:192
+#, qt-format
+msgctxt "SessionManager|"
+msgid "Could not save the session: %1"
+msgstr "No se pudo guardar la sesión: %1"
+
+#: ../src/engine/SessionManager.cpp:211
+#, qt-format
+msgctxt "SessionManager|"
+msgid "Could not read the session: %1"
+msgstr "No se pudo leer la sesión: %1"
+
+#: ../src/engine/SessionManager.cpp:221
+#, qt-format
+msgctxt "SessionManager|"
+msgid "Corrupt session (%1); ignoring it."
+msgstr "Sesión corrupta (%1); se ignora."
+
+#: ../src/qml/components/SplashScreen.qml:34
+msgctxt "SplashScreen|"
+msgid "Starting up… loading your project."
+msgstr "Iniciando… cargando tu proyecto."
+
+#: ../src/qml/components/toolbar/Toolbar.qml:43
+msgctxt "Toolbar|"
+msgid "PROJECTS"
+msgstr "PROYECTOS"
+
+#: ../src/qml/components/toolbar/Toolbar.qml:45
+msgctxt "Toolbar|"
+msgid "Close project and go to the welcome screen"
+msgstr "Cerrar el proyecto e ir a la pantalla de bienvenida"
+
+#: ../src/qml/components/toolbar/Toolbar.qml:59
+msgctxt "Toolbar|"
+msgid "MASTER"
+msgstr ""
+
+#: ../src/engine/TrackLibrary.cpp:73
+#, qt-format
+msgctxt "TrackLibrary|"
+msgid "Could not create the tracklist directory: %1"
+msgstr "No se pudo crear el directorio tracklist: %1"
+
+#: ../src/engine/TrackLibrary.cpp:90
+#, qt-format
+msgctxt "TrackLibrary|"
+msgid "Could not copy the track into the project: %1"
+msgstr "No se pudo copiar la pista al proyecto: %1"
+
+#: ../src/engine/TrackLibrary.cpp:111
+#, qt-format
+msgctxt "TrackLibrary|"
+msgid "Directory not found: %1"
+msgstr "Directorio no encontrado: %1"
+
+#: ../src/engine/TrackLibrary.cpp:158
+#, qt-format
+msgctxt "TrackLibrary|"
+msgid "Only local files are supported: %1"
+msgstr "Solo se admiten archivos locales: %1"
+
+#: ../src/qml/components/TrackList.qml:51
+msgctxt "TrackList|"
+msgid "Add audio files"
+msgstr "Añadir archivos de audio"
+
+#: ../src/qml/components/TrackList.qml:53
+msgctxt "TrackList|"
+msgid "Audio (*.wav *.mp3 *.ogg *.flac)"
+msgstr ""
+
+#: ../src/qml/components/TrackList.qml:53
+msgctxt "TrackList|"
+msgid "All files (*)"
+msgstr "Todos los archivos (*)"
+
+#: ../src/qml/components/TrackList.qml:63
+msgctxt "TrackList|"
+msgid "Remove track"
+msgstr "Quitar pista"
+
+#: ../src/qml/components/TrackList.qml:64
+#, qt-format
+msgctxt "TrackList|"
+msgid ""
+"Remove “%1” from the library? It will be unbound from every channel in every "
+"preset."
+msgstr ""
+"¿Quitar «%1» de la biblioteca? Se desvinculará de todos los canales en todos "
+"los presets."
+
+#: ../src/qml/components/TrackList.qml:85
+msgctxt "TrackList|"
+msgid "Track list"
+msgstr "Lista de pistas"
+
+#: ../src/qml/components/TrackList.qml:97
+msgctxt "TrackList|"
+msgid "Add files"
+msgstr "Añadir archivos"
+
+#: ../src/qml/components/TrackList.qml:127
+msgctxt "TrackList|"
+msgid ""
+"The library is empty.\n"
+"Press “Add files” and then BIND\n"
+"to send a track to a channel."
+msgstr ""
+"La biblioteca está vacía.\n"
+"Pulsa “Añadir archivos” y luego Vincular\n"
+"para enviar una pista a un canal."
+
+#: ../src/qml/components/TrackList.qml:235
+msgctxt "TrackList|"
+msgid "Bind"
+msgstr "Vincular"
+
+#: ../src/qml/components/TrackList.qml:239
+msgctxt "TrackList|"
+msgid "Remove"
+msgstr "Quitar"
+
+#: ../src/qml/components/WelcomeScreen.qml:44
+msgctxt "WelcomeScreen|"
+msgid "Create a new project or open an existing one."
+msgstr "Crea un proyecto nuevo o abre uno existente."
+
+#: ../src/qml/components/WelcomeScreen.qml:57
+#, fuzzy
+msgctxt "WelcomeScreen|"
+msgid "New project"
+msgstr "Nuevo proyecto"
+
+#: ../src/qml/components/WelcomeScreen.qml:66
+#, fuzzy
+msgctxt "WelcomeScreen|"
+msgid "Open project"
+msgstr "Abrir proyecto"
+
+#: ../src/qml/components/WelcomeScreen.qml:76
+msgctxt "WelcomeScreen|"
+msgid "Recent projects"
+msgstr "Proyectos recientes"
+
+#: ../src/qml/components/WelcomeScreen.qml:109
+msgctxt "WelcomeScreen|"
+msgid "No recent projects yet."
+msgstr "Aún no hay proyectos recientes."
+
+#: ../src/qml/components/WelcomeScreen.qml:178
+msgctxt "WelcomeScreen|"
+msgid "About"
+msgstr ""
+
+#: ../src/qml/components/WelcomeScreen.qml:228
+#, qt-format
+msgctxt "WelcomeScreen|"
+msgid "Version %1"
+msgstr ""
+
+#: ../src/qml/components/WelcomeScreen.qml:238
+msgctxt "WelcomeScreen|"
+msgid "Real-time multitrack audio mixer for Linux."
+msgstr ""
+
+#: ../src/qml/components/WelcomeScreen.qml:248
+#, qt-format
+msgctxt "WelcomeScreen|"
+msgid "License: %1"
+msgstr ""
+
+#: ../src/qml/components/WelcomeScreen.qml:279
+msgctxt "WelcomeScreen|"
+msgid "Close"
+msgstr ""

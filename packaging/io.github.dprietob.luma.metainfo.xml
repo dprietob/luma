@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2026 Luma Contributors -->
+<component type="desktop-application">
+  <id>io.github.dprietob.luma</id>
+
+  <name>Luma</name>
+  <summary>Real-time multitrack audio mixer</summary>
+  <summary xml:lang="es">Mezclador de audio multipista en tiempo real</summary>
+
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+
+  <developer id="io.github.dprietob">
+    <name>Daniel Prieto</name>
+  </developer>
+
+  <description>
+    <p>
+      Luma is a real-time multitrack audio mixer for Linux with the look and feel
+      of a professional studio tool. Play many audio channels at once and control
+      each one independently.
+    </p>
+    <p>Features:</p>
+    <ul>
+      <li>Independent per-channel playback of WAV, MP3, OGG and FLAC files</li>
+      <li>Per-channel volume, pan, fades and looping</li>
+      <li>Effects per channel: reverb, delay, distortion, pitch and speed, plus a graphic equalizer</li>
+      <li>Main and auxiliary outputs, routed independently</li>
+      <li>Presets (scenes) and node-graph automation flows</li>
+      <li>Projects stored in a portable folder, with imported tracks copied alongside</li>
+    </ul>
+    <p xml:lang="es">
+      Luma es un mezclador de audio multipista en tiempo real para Linux con
+      estética de herramienta profesional de estudio. Reproduce muchos canales de
+      audio a la vez y controla cada uno de forma independiente.
+    </p>
+  </description>
+
+  <launchable type="desktop-id">io.github.dprietob.luma.desktop</launchable>
+
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/dprietob/luma/master/screenshots/main.png</image>
+      <caption>The mixer with several channels</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/dprietob/luma/master/screenshots/effects.png</image>
+      <caption>Per-channel effects</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/dprietob/luma/master/screenshots/equalizer.png</image>
+      <caption>Graphic equalizer</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/dprietob/luma/master/screenshots/flow.png</image>
+      <caption>Node-graph automation flows</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/dprietob/luma/master/screenshots/flow_node.png</image>
+      <caption>Configuring a flow node</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/dprietob/luma/master/screenshots/spectrum.png</image>
+      <caption>Spectrum view</caption>
+    </screenshot>
+  </screenshots>
+
+  <url type="homepage">https://github.com/dprietob/luma</url>
+  <url type="bugtracker">https://github.com/dprietob/luma/issues</url>
+
+  <categories>
+    <category>AudioVideo</category>
+    <category>Audio</category>
+  </categories>
+
+  <keywords>
+    <keyword>mixer</keyword>
+    <keyword>audio</keyword>
+    <keyword>multitrack</keyword>
+    <keyword>playback</keyword>
+  </keywords>
+
+  <provides>
+    <mediatype>application/x-luma</mediatype>
+  </provides>
+
+  <content_rating type="oars-1.1"/>
+
+  <releases>
+    <release version="1.0.0" date="2026-08-15">
+      <description>
+        <p>First public release.</p>
+      </description>
+    </release>
+  </releases>
+</component>

@@ -1,0 +1,44 @@
+# Build
+/build/
+/build-*/
+*.o
+*.obj
+*.so
+*.a
+
+# Empaquetado AppImage (artefactos y herramientas descargadas)
+/squashfs-root/
+/packaging/tools/
+*.AppImage
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+compile_commands.json
+
+# Qt / QML generated
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+*.qmlc
+*.jsc
+.qmake.stash
+.qtc_clangd/
+
+# Editors / IDE
+.vscode/
+.idea/
+*.user
+*.autosave
+
+# OS
+.DS_Store
+*.swp
+*~
+
+# Flatpak
+/.flatpak-builder/
+/repo/
+/.flatpak/
