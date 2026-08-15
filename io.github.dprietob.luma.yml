@@ -1,7 +1,7 @@
 # Flatpak manifest for Luma — Flathub submission.
 #
 # Runtime: KDE (provides Qt 6). Build with:
-#   flatpak install flathub org.kde.Sdk//6.9 org.kde.Platform//6.9
+#   flatpak install flathub org.kde.Sdk//6.11 org.kde.Platform//6.11
 #   flatpak-builder --user --install --force-clean build-dir io.github.dprietob.luma.yml
 #
 # For the `luma` module you can build locally by swapping its `sources` for:
@@ -9,7 +9,7 @@
 #     path: .
 app-id: io.github.dprietob.luma
 runtime: org.kde.Platform
-runtime-version: "6.9"
+runtime-version: "6.11"
 sdk: org.kde.Sdk
 command: luma
 
@@ -21,9 +21,9 @@ finish-args:
   # Audio output/input via PipeWire (PulseAudio compatibility socket).
   - --socket=pulseaudio
   # Luma manages project folders and imports/copies audio files chosen by the
-  # user from arbitrary locations, so it needs broad filesystem access.
-  # Flathub reviewers may ask to narrow this (e.g. to =home); adjust if so.
-  - --filesystem=host
+  # user, and re-opens the last project by path on startup, so it needs
+  # persistent access to the user's files.
+  - --filesystem=home
 
 cleanup:
   - /include
@@ -133,4 +133,4 @@ modules:
       - type: git
         url: https://github.com/dprietob/luma.git
         tag: "1.0.0"
-        commit: dc5dcd9dbf285a903ca8ea9e20dd4e11a07b27d0
+        commit: d7f2cbc8d67118d9db84fd5e9de1982f3ba39cfe

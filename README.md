@@ -55,7 +55,7 @@ computer.
 Build the Flatpak from the command line:
 
 ```shell
-flatpak install flathub org.kde.Platform//6.9 org.kde.Sdk//6.9
+flatpak install flathub org.kde.Platform//6.11 org.kde.Sdk//6.11
 flatpak-builder --user --install --force-clean build-dir io.github.dprietob.luma.yml
 flatpak run io.github.dprietob.luma
 ```
