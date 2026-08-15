@@ -216,5 +216,8 @@ install(FILES packaging/io.github.dprietob.luma.xml
     DESTINATION ${CMAKE_INSTALL_DATADIR}/mime/packages)
 
 # --- Tests ---
-enable_testing()
-add_subdirectory(tests)
+option(LUMA_BUILD_TESTS "Build the unit tests" ON)
+if(LUMA_BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(tests)
+endif()
