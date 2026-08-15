@@ -38,6 +38,7 @@ modules:
   - name: libogg
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
       - -DBUILD_SHARED_LIBS=ON
       - -DBUILD_TESTING=OFF
     sources:
@@ -48,6 +49,7 @@ modules:
   - name: libvorbis
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
       - -DBUILD_SHARED_LIBS=ON
       - -DBUILD_TESTING=OFF
     sources:
@@ -58,6 +60,7 @@ modules:
   - name: flac
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
       - -DBUILD_SHARED_LIBS=ON
       - -DBUILD_TESTING=OFF
       - -DBUILD_PROGRAMS=OFF
@@ -73,6 +76,7 @@ modules:
   - name: opus
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
       - -DBUILD_SHARED_LIBS=ON
       - -DBUILD_TESTING=OFF
     sources:
@@ -83,6 +87,7 @@ modules:
   - name: libsndfile
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
       - -DBUILD_SHARED_LIBS=ON
       - -DBUILD_TESTING=OFF
       - -DBUILD_PROGRAMS=OFF
@@ -105,6 +110,7 @@ modules:
   - name: portaudio
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
       - -DPA_BUILD_SHARED=ON
       - -DPA_BUILD_STATIC=OFF
     sources:
@@ -115,6 +121,7 @@ modules:
   - name: soundtouch
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
       - -DBUILD_SHARED_LIBS=ON
       - -DSOUNDSTRETCH=OFF
       - -DSOUNDTOUCH_DLL=OFF
@@ -133,4 +140,4 @@ modules:
       - type: git
         url: https://github.com/dprietob/luma.git
         tag: "1.0.0"
-        commit: d7f2cbc8d67118d9db84fd5e9de1982f3ba39cfe
+        commit: 2eeb3dc7508ff20c9e1be198c24d9ea50a594b89
