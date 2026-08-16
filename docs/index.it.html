@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manuale utente di Luma</title>
+<style>
+  :root {
+    --bg: #080808; --panel: #151515; --panel-2: #1c1c1c; --border: #2a2a2a;
+    --border-bright: #555; --text: #eee; --text-2: #aaa; --muted: #777;
+    --accent: #e8601c; --accent-soft: rgba(232, 96, 28, 0.14);
+    --radius: 10px; --sidebar: 280px; --maxw: 900px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.65; font-size: 17px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .layout { display: flex; align-items: flex-start; }
+  .sidebar { width: var(--sidebar); flex: 0 0 var(--sidebar); position: sticky; top: 0;
+    height: 100vh; overflow-y: auto; background: var(--panel); border-right: 1px solid var(--border); padding: 24px 18px; }
+  .sidebar .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .sidebar .brand img { width: 44px; height: 44px; border-radius: 8px; }
+  .sidebar .brand strong { font-size: 20px; letter-spacing: .5px; }
+  .sidebar .brand span { display: block; font-size: 12px; color: var(--muted); }
+  .langsel { width: 100%; margin-bottom: 18px; background: var(--panel-2); color: var(--text);
+    border: 1px solid var(--border-bright); border-radius: 6px; padding: 7px 8px; font-size: 14px; cursor: pointer; }
+  .sidebar nav a { display: block; color: var(--text-2); padding: 6px 10px; border-radius: 6px; font-size: 14.5px; }
+  .sidebar nav a:hover { background: var(--panel-2); color: var(--text); text-decoration: none; }
+  .sidebar nav .num { color: var(--muted); margin-right: 8px; }
+  main { flex: 1 1 auto; min-width: 0; padding: 0 32px 100px; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; }
+  .hero { text-align: center; padding: 64px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+  .hero img { width: 120px; height: 120px; border-radius: 22px; }
+  .hero h1 { font-size: 40px; margin: 18px 0 6px; letter-spacing: 1px; }
+  .hero p { color: var(--text-2); font-size: 19px; margin: 0 auto; max-width: 620px; }
+  section { padding-top: 28px; margin-top: 8px; }
+  h2 { font-size: 26px; margin: 34px 0 6px; padding-bottom: 8px; border-bottom: 2px solid var(--accent); display: inline-block; }
+  h2 .n { color: var(--accent); margin-right: 10px; }
+  h3 { font-size: 19px; margin: 26px 0 4px; color: var(--text); }
+  p, li { color: var(--text); }
+  ul { padding-left: 22px; }
+  li { margin: 4px 0; }
+  strong { color: #fff; }
+  figure { margin: 22px 0; }
+  figure img { width: 100%; height: auto; display: block; border: 1px solid var(--border); border-radius: var(--radius); background: var(--panel); }
+  figcaption { color: var(--muted); font-size: 13.5px; text-align: center; margin-top: 8px; }
+  kbd { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 13px; background: var(--panel-2);
+    border: 1px solid var(--border-bright); border-bottom-width: 2px; border-radius: 6px; padding: 2px 7px; color: #fff; white-space: nowrap; }
+  code { font-family: ui-monospace, Menlo, Consolas, monospace; background: var(--panel-2); padding: 1px 6px; border-radius: 5px; font-size: 14px; }
+  .callout { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 18px 0; color: var(--text-2); }
+  .callout strong { color: var(--accent); }
+  table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 15px; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-2); font-weight: 600; }
+  td:first-child { color: #fff; }
+  .footer { color: var(--muted); font-size: 13.5px; border-top: 1px solid var(--border); margin-top: 60px; padding-top: 20px; text-align: center; }
+  .menu-toggle { display: none; }
+  @media (max-width: 860px) {
+    .layout { flex-direction: column; }
+    .sidebar { position: static; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+    .sidebar nav { display: none; }
+    .sidebar nav.open { display: block; }
+    .menu-toggle { display: inline-block; background: var(--panel-2); color: var(--text); border: 1px solid var(--border-bright); border-radius: 6px; padding: 6px 12px; font-size: 14px; cursor: pointer; }
+    main { padding: 0 18px 80px; }
+    .hero h1 { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="./images/icon.png" alt="Luma">
+      <div><strong>Luma</strong><span>Manuale utente</span></div>
+    </div>
+    <select class="langsel" aria-label="Language" onchange="if(this.value)window.location.href=this.value">
+      <option value="index.html">English</option><option value="index.es.html">Español</option><option value="index.de.html">Deutsch</option><option value="index.fr.html">Français</option><option value="index.it.html" selected>Italiano</option><option value="index.nl.html">Nederlands</option><option value="index.pt.html">Português</option>
+    </select>
+    <button class="menu-toggle" onclick="document.getElementById('nav').classList.toggle('open')">☰ Sezioni</button>
+    <nav id="nav">
+      <a href="#intro"><span class="num">·</span>Cos'è Luma</a>
+      <a href="#empezar"><span class="num">1</span>Primi passi</a>
+      <a href="#proyectos"><span class="num">2</span>Progetti</a>
+      <a href="#ventana"><span class="num">3</span>La finestra principale</a>
+      <a href="#barra"><span class="num">4</span>La barra superiore</a>
+      <a href="#pistas"><span class="num">5</span>Elenco tracce</a>
+      <a href="#canales"><span class="num">6</span>I canali</a>
+      <a href="#fx"><span class="num">7</span>Effetti</a>
+      <a href="#eq"><span class="num">8</span>Equalizzatore</a>
+      <a href="#region"><span class="num">9</span>Ritagliare una traccia</a>
+      <a href="#presets"><span class="num">10</span>Preset (scene)</a>
+      <a href="#flujos"><span class="num">11</span>Flussi</a>
+      <a href="#salidas"><span class="num">12</span>Uscite audio</a>
+      <a href="#mesa"><span class="num">13</span>Impostazioni del mixer</a>
+      <a href="#preferencias"><span class="num">14</span>Preferenze</a>
+      <a href="#atajos"><span class="num">15</span>Scorciatoie da tastiera</a>
+    </nav>
+  </aside>
+
+  <main>
+  <div class="wrap">
+
+    <header class="hero">
+      <img src="./images/icon.png" alt="Luma">
+      <h1>Luma</h1>
+      <p>Un mixer audio multitraccia per Linux. Riproduci molte tracce insieme e controlla ognuna a modo tuo: volume, bilanciamento, dissolvenze, effetti e altro.</p>
+    </header>
+
+    <section id="intro">
+      <h2>Cos'è Luma</h2>
+      <p>Luma è come un <strong>banco di missaggio</strong> sul tuo computer. Ogni traccia audio (una canzone, un effetto sonoro, una voce…) sta su un proprio <strong>canale</strong>, e decidi tu come suona e quando: alzare o abbassare il volume, spostarla a sinistra o a destra, aggiungere effetti, farla comparire o sparire, e mandarla a un set di casse o a un altro.</p><p>È pensato per il live, la radio, il teatro, gli eventi o qualsiasi situazione in cui devi lanciare e mixare più audio in modo affidabile. Non servono conoscenze tecniche: questa guida ti accompagna passo passo.</p><figure class="shot"><img src="./images/main.png" alt="Panoramica di Luma con diversi canali" loading="lazy"><figcaption>Il banco di missaggio di Luma con diversi canali.</figcaption></figure>
+    </section>
+
+    <section id="empezar">
+      <h2><span class="n">1</span>Primi passi</h2>
+      <p>Alla prima apertura di Luma vedrai la <strong>schermata di benvenuto</strong>. Da qui scegli su cosa lavorare:</p><ul><li><strong>Nuovo progetto</strong>: crea un progetto vuoto. Dagli un nome e scegli dove salvarlo.</li><li><strong>Apri progetto</strong>: apre un progetto che hai già.</li><li><strong>Progetti recenti</strong>: accesso rapido a ciò che hai aperto di recente. La ✕ di ogni riga lo toglie dall'elenco (con conferma; non elimina nulla dal disco, solo la scorciatoia).</li><li><strong>Informazioni</strong>: dati sull'app (versione, licenza).</li></ul><p>Alla successiva apertura, Luma riaprirà automaticamente l'ultimo progetto su cui lavoravi (modificabile nelle <a href="#preferencias">Preferenze</a>).</p><figure class="shot"><img src="./images/welcome.png" alt="Schermata di benvenuto" loading="lazy"><figcaption>La schermata di benvenuto: nuovo progetto, apri e recenti.</figcaption></figure>
+    </section>
+
+    <section id="proyectos">
+      <h2><span class="n">2</span>Progetti</h2>
+      <p>Un <strong>progetto</strong> conserva tutto il tuo lavoro: le tracce, le impostazioni di ogni canale, i preset e i flussi. Ogni progetto è una <strong>cartella</strong> che puoi copiare, spostare o portare su un altro computer senza problemi.</p><div class="callout"><strong>La cosa importante:</strong> quando aggiungi una traccia, Luma ne tiene una <strong>copia</strong> dentro il progetto. Così, anche se elimini o sposti il file originale, il progetto suona sempre uguale. La cartella è autonoma e portabile.</div><p>Se fai doppio clic su un file <code>.luma</code> dal tuo gestore file, si apre direttamente in Luma.</p>
+    </section>
+
+    <section id="ventana">
+      <h2><span class="n">3</span>La finestra principale</h2>
+      <p>Lo schermo si divide in tre zone:</p><ul><li><strong>In alto</strong>: la barra con il progetto, il volume generale e i preset.</li><li><strong>A sinistra</strong>: l'elenco tracce (in alto) e l'elenco flussi (in basso).</li><li><strong>A destra</strong>: i canali, dove fai il missaggio.</li></ul><div class="callout">Puoi <strong>spostare la finestra</strong> trascinando una zona libera della barra superiore, e ridimensionarla dai bordi.</div>
+    </section>
+
+    <section id="barra">
+      <h2><span class="n">4</span>La barra superiore</h2>
+      <ul><li><strong>PROJECTS</strong>: chiude il progetto corrente e torna alla schermata di benvenuto.</li><li><strong>MASTER</strong>: il <strong>volume generale</strong> di tutto il mix, con il suo misuratore di livello.</li><li><strong>PANIC</strong>: il pulsante d'emergenza. Ferma <strong>tutto</strong> l'audio all'istante.</li><li>Pulsanti delle <strong>opzioni</strong>: uscite audio, numero di canali, riordina, griglia e preferenze.</li><li>Pulsanti di <strong>preset</strong> (P1…P10): passa tra le scene salvate.</li></ul><figure class="shot"><img src="./images/toolbar.png" alt="Barra superiore di Luma" loading="lazy"><figcaption>La barra superiore: progetto, MASTER, PANIC, opzioni e preset.</figcaption></figure>
+    </section>
+
+    <section id="pistas">
+      <h2><span class="n">5</span>Elenco tracce</h2>
+      <p>È la libreria audio del tuo progetto (in alto a sinistra).</p><ul><li><strong>Aggiungi file</strong>: importa audio in formato WAV, MP3, OGG o FLAC. Si ordinano da soli in ordine alfabetico.</li><li>Di ogni traccia vedi <strong>nome</strong>, <strong>durata</strong>, <strong>formato</strong> e in quali canali è usata.</li><li><strong>Per usare una traccia</strong>: trascinala su un canale, oppure usa il suo menu e scegli <em>Bind</em> per assegnarla.</li><li>Il menu ha anche <em>Remove</em> per toglierla (con conferma; elimina la copia del progetto).</li></ul><figure class="shot"><img src="./images/tracklist.png" alt="Elenco tracce" loading="lazy"><figcaption>L'elenco tracce del progetto.</figcaption></figure>
+    </section>
+
+    <section id="canales">
+      <h2><span class="n">6</span>I canali</h2>
+      <p>Ogni canale è una colonna che riproduce una traccia. Dall'alto in basso hai:</p><ul><li><strong>Barra colore</strong> e <strong>nome</strong> (doppio clic per rinominarlo). Il colore aiuta a riconoscere i canali a colpo d'occhio.</li><li><strong>Bilanciamento</strong>: sposta il suono a sinistra o a destra.</li><li><strong>Volume</strong>: il cursore grande, con il misuratore di livello. Ha due indicatori che fissano fin dove salgono o scendono le dissolvenze.</li><li><strong>Dissolvenze</strong>: pulsanti per far comparire (fade in) o sparire (fade out) la traccia in modo graduale. Puoi impostare i secondi di durata e il tipo di curva.</li><li><strong>AUX</strong>: manda questo canale all'uscita ausiliaria invece che alla principale.</li><li><strong>Effetti</strong> ed <strong>Equalizzatore</strong>: aprono i loro pannelli (sezioni 7 e 8). Si illuminano quando sono attivi.</li><li><strong>Ripetizione</strong>: riproduce la traccia in loop.</li><li><strong>Riproduci / Pausa</strong> e <strong>Ferma</strong>.</li><li><strong>Barra di avanzamento</strong>: mostra a che punto è la traccia; cliccala per ritagliare la parte da riprodurre (sezione 9).</li></ul><div class="callout"><strong>Clic destro</strong> su un canale per assegnare o togliere la traccia e cambiare il colore rapidamente.</div><figure class="shot"><img src="./images/channels.png" alt="Canali con i loro controlli" loading="lazy"><figcaption>I canali, con bilanciamento, volume, dissolvenze, effetti e trasporto.</figcaption></figure>
+    </section>
+
+    <section id="fx">
+      <h2><span class="n">7</span>Effetti</h2>
+      <p>Ogni canale ha cinque effetti che puoi attivare separatamente. Ognuno ricorda i suoi valori anche da spento, e c'è un pulsante per tornare ai valori predefiniti.</p><table><tr><th>Effetto</th><th>A cosa serve</th><th>Controlli</th></tr><tr><td>Reverb</td><td>Dà senso di spazio, come in una sala.</td><td>Dimensione stanza, smorzamento, mix</td></tr><tr><td>Delay</td><td>Crea un eco ripetuto.</td><td>Time (fino a 1 s), feedback, mix</td></tr><tr><td>Distortion</td><td>Sporca e satura il suono.</td><td>Drive (1–50), mix</td></tr><tr><td>Pitch</td><td>Cambia l'intonazione senza cambiare la velocità.</td><td>−12 a +12 semitoni</td></tr><tr><td>Speed</td><td>Cambia la velocità senza cambiare l'intonazione.</td><td>0,5× a 2×</td></tr></table><figure class="shot"><img src="./images/effects.png" alt="Pannello effetti di un canale" loading="lazy"><figcaption>Pannello effetti: Reverb, Delay, Distortion, Pitch e Speed.</figcaption></figure>
+    </section>
+
+    <section id="eq">
+      <h2><span class="n">8</span>Equalizzatore</h2>
+      <p>L'equalizzatore permette di esaltare o attenuare diverse <strong>frequenze</strong> del suono: bassi, medi e alti. Ha 10 bande (da 32&nbsp;Hz a 16&nbsp;kHz), ciascuna regolabile fino a ±12&nbsp;dB.</p><p>Ad esempio: abbassa le bande più basse per togliere il rimbombo, o alza quelle alte per più brillantezza.</p><figure class="shot"><img src="./images/equalizer.png" alt="Equalizzatore grafico a 10 bande" loading="lazy"><figcaption>Equalizzatore grafico a 10 bande.</figcaption></figure>
+    </section>
+
+    <section id="region">
+      <h2><span class="n">9</span>Ritagliare una traccia</h2>
+      <p>Se vuoi riprodurre solo una parte di una traccia, clicca sulla sua <strong>barra di avanzamento</strong>. Si apre una finestra dove puoi:</p><ul><li>vedere la <strong>durata</strong> totale e la <strong>posizione</strong> attuale.</li><li>impostare un <strong>inizio</strong> e una <strong>fine</strong> per riprodurre solo quella parte.</li><li>cancellare il ritaglio di inizio o fine, o ripristinare la traccia intera.</li></ul><figure class="shot"><img src="./images/spectrum.png" alt="Forma d'onda con ritaglio della regione" loading="lazy"><figcaption>La forma d'onda della traccia, con gli indicatori di inizio e fine della regione.</figcaption></figure>
+    </section>
+
+    <section id="presets">
+      <h2><span class="n">10</span>Preset (scene)</h2>
+      <p>Un <strong>preset</strong> è un'istantanea completa di tutto il banco: quale traccia ha ogni canale, volumi, effetti, colori… Hai <strong>10 preset</strong> (P1–P10) per progetto.</p><p>Servono a preparare momenti diversi di un evento. Ad esempio: P1 per l'ingresso del pubblico, P2 per l'atto principale, P3 per la chiusura. Passi dall'uno all'altro con un clic.</p><div class="callout">Cambiare preset <strong>ferma la riproduzione</strong> in corso (con conferma) e Luma <strong>salva automaticamente</strong> lo stato del preset che lasci, per non perdere nulla.</div><figure class="shot"><img src="./images/presets.png" alt="Pulsanti di preset da P1 a P10" loading="lazy"><figcaption>I 10 pulsanti di preset.</figcaption></figure>
+    </section>
+
+    <section id="flujos">
+      <h2><span class="n">11</span>Flussi</h2>
+      <p>I <strong>flussi</strong> automatizzano la riproduzione: invece di lanciare ogni traccia a mano, definisci una sequenza e Luma la esegue per te. Ideale per concatenare audio con transizioni morbide.</p><h3>Creare un flusso</h3><p>Dall'elenco flussi (in basso a sinistra) premi <strong>New flow</strong>. Si apre un editor con una <strong>tela</strong> dove costruisci la sequenza come una piccola mappa:</p><ul><li><strong>Aggiungi passi</strong>: clicca un canale nell'elenco per metterlo sulla tela come «nodo». Lo stesso canale può comparire più volte.</li><li><strong>Collegali</strong>: trascina dal punto di uscita di un nodo al successivo per collegarli. Il punto <strong>START</strong> indica l'inizio.</li><li><strong>Muoviti sulla tela</strong>: trascina lo sfondo o usa la rotellina; <kbd>Ctrl</kbd> + rotellina per lo zoom.</li></ul><figure class="shot"><img src="./images/flow_config.png" alt="Editor di flussi con nodi collegati" loading="lazy"><figcaption>L'editor di flussi: ogni nodo è un canale e le frecce sono i collegamenti.</figcaption></figure><h3>Configurare ogni passo</h3><p>Doppio clic su un nodo per decidere <strong>come deve suonare</strong> quel canale quando il flusso lo attiva (volume, dissolvenza, loop, punto di inizio, effetti…).</p><p>Clicca un collegamento per decidere <strong>quando</strong> si passa al passo successivo e cosa succede:</p><ul><li><strong>Attivatore</strong>: subito, dopo alcuni secondi, o quando la traccia precedente finisce.</li><li><strong>Sull'origine</strong>: non fare nulla, fade out o fermare.</li><li><strong>Sulla destinazione</strong>: riprodurre direttamente o entrare con un fade in.</li></ul><figure class="shot"><img src="./images/flow_node.png" alt="Configurazione di un nodo del flusso" loading="lazy"><figcaption>Ogni passo del flusso ha le proprie impostazioni.</figcaption></figure><h3>Eseguire</h3><p>Premi <strong>Run</strong> per avviare il flusso. I canali coinvolti mostrano un <strong>bordo lampeggiante</strong> per riconoscerli, e puoi continuare a usare il banco durante l'esecuzione. Il flusso termina da solo, con <strong>Stop</strong> o con <strong>PANIC</strong>; alla fine, i canali tornano com'erano.</p>
+    </section>
+
+    <section id="salidas">
+      <h2><span class="n">12</span>Uscite audio</h2>
+      <p>Luma può mandare il suono a <strong>due uscite diverse</strong>:</p><ul><li><strong>Main</strong>: dove va la maggior parte dei canali.</li><li><strong>Aux</strong>: dove vanno i canali con il pulsante <strong>AUX</strong> attivo.</li></ul><p>Nella finestra delle uscite scegli quale dispositivo usa ognuna (ad esempio casse per il pubblico e cuffie per te), oppure lasci il dispositivo predefinito del sistema.</p><figure class="shot"><img src="./images/devices.png" alt="Finestra delle uscite audio" loading="lazy"><figcaption>Scegli il dispositivo dell'uscita principale e di quella ausiliaria.</figcaption></figure>
+    </section>
+
+    <section id="mesa">
+      <h2><span class="n">13</span>Impostazioni del mixer</h2>
+      <ul><li><strong>Numero di canali</strong>: scegli quanti canali vuoi (da 1 a 40). Se riduci il numero, ti avvisa che perderai la configurazione degli ultimi.</li><li><strong>Riordina canali</strong>: attiva una modalità per cambiare l'ordine dei canali.</li><li><strong>Modalità griglia</strong>: dispone i canali su due righe, utile quando sono molti.</li></ul><figure class="shot"><img src="./images/grid_mode.png" alt="Modalità griglia" loading="lazy"><figcaption>La modalità griglia dispone i canali su due righe.</figcaption></figure>
+    </section>
+
+    <section id="preferencias">
+      <h2><span class="n">14</span>Preferenze</h2>
+      <ul><li><strong>Apri l'ultimo progetto all'avvio</strong>: attiva o meno la ripresa automatica del lavoro.</li><li><strong>Lingua</strong>: cambia la lingua dell'interfaccia (applicata al riavvio). Disponibile in inglese, spagnolo, francese, tedesco, italiano, portoghese e olandese.</li><li><strong>Dimensione della cache audio</strong> e <strong>riscalda cache</strong>: impostazioni di prestazione perché le tracce suonino senza ritardi.</li><li><strong>Scorciatoie da tastiera</strong>: puoi riassegnare qualsiasi scorciatoia. Premi il suo pulsante e poi la combinazione di tasti che preferisci.</li></ul><figure class="shot"><img src="./images/preferences.png" alt="Finestra delle preferenze" loading="lazy"><figcaption>La finestra delle preferenze: avvio, lingua, cache e scorciatoie.</figcaption></figure>
+    </section>
+
+    <section id="atajos">
+      <h2><span class="n">15</span>Scorciatoie da tastiera</h2>
+      <p>Valori predefiniti (modificabili nelle Preferenze):</p><table><tr><th>Azione</th><th>Scorciatoia</th></tr><tr><td>Nuovo progetto</td><td><kbd>Ctrl</kbd> + <kbd>N</kbd></td></tr><tr><td>Apri progetto</td><td><kbd>Ctrl</kbd> + <kbd>O</kbd></td></tr><tr><td>Aggiungi traccia all'elenco</td><td><kbd>Ctrl</kbd> + <kbd>T</kbd></td></tr><tr><td>Nuovo flusso</td><td><kbd>Ctrl</kbd> + <kbd>F</kbd></td></tr><tr><td>Uscite audio</td><td><kbd>Ctrl</kbd> + <kbd>D</kbd></td></tr><tr><td>Numero di canali</td><td><kbd>Ctrl</kbd> + <kbd>H</kbd></td></tr><tr><td>Riordina canali</td><td><kbd>Ctrl</kbd> + <kbd>R</kbd></td></tr><tr><td>Modalità griglia</td><td><kbd>Ctrl</kbd> + <kbd>G</kbd></td></tr><tr><td>Master al minimo</td><td><kbd>Ctrl</kbd> + <kbd>M</kbd></td></tr><tr><td>Panic (ferma tutto)</td><td><kbd>Ctrl</kbd> + <kbd>K</kbd></td></tr><tr><td>Preferenze</td><td><kbd>Ctrl</kbd> + <kbd>P</kbd></td></tr><tr><td>Seleziona preset 1…10</td><td><kbd>F1</kbd> … <kbd>F10</kbd></td></tr></table>
+    </section>
+
+    <div class="footer">Luma · Manuale utente · Licenza GPL-3.0-or-later</div>
+
+  </div>
+  </main>
+</div>
+</body>
+</html>

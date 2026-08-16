@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luma-gebruikershandleiding</title>
+<style>
+  :root {
+    --bg: #080808; --panel: #151515; --panel-2: #1c1c1c; --border: #2a2a2a;
+    --border-bright: #555; --text: #eee; --text-2: #aaa; --muted: #777;
+    --accent: #e8601c; --accent-soft: rgba(232, 96, 28, 0.14);
+    --radius: 10px; --sidebar: 280px; --maxw: 900px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.65; font-size: 17px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .layout { display: flex; align-items: flex-start; }
+  .sidebar { width: var(--sidebar); flex: 0 0 var(--sidebar); position: sticky; top: 0;
+    height: 100vh; overflow-y: auto; background: var(--panel); border-right: 1px solid var(--border); padding: 24px 18px; }
+  .sidebar .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .sidebar .brand img { width: 44px; height: 44px; border-radius: 8px; }
+  .sidebar .brand strong { font-size: 20px; letter-spacing: .5px; }
+  .sidebar .brand span { display: block; font-size: 12px; color: var(--muted); }
+  .langsel { width: 100%; margin-bottom: 18px; background: var(--panel-2); color: var(--text);
+    border: 1px solid var(--border-bright); border-radius: 6px; padding: 7px 8px; font-size: 14px; cursor: pointer; }
+  .sidebar nav a { display: block; color: var(--text-2); padding: 6px 10px; border-radius: 6px; font-size: 14.5px; }
+  .sidebar nav a:hover { background: var(--panel-2); color: var(--text); text-decoration: none; }
+  .sidebar nav .num { color: var(--muted); margin-right: 8px; }
+  main { flex: 1 1 auto; min-width: 0; padding: 0 32px 100px; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; }
+  .hero { text-align: center; padding: 64px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+  .hero img { width: 120px; height: 120px; border-radius: 22px; }
+  .hero h1 { font-size: 40px; margin: 18px 0 6px; letter-spacing: 1px; }
+  .hero p { color: var(--text-2); font-size: 19px; margin: 0 auto; max-width: 620px; }
+  section { padding-top: 28px; margin-top: 8px; }
+  h2 { font-size: 26px; margin: 34px 0 6px; padding-bottom: 8px; border-bottom: 2px solid var(--accent); display: inline-block; }
+  h2 .n { color: var(--accent); margin-right: 10px; }
+  h3 { font-size: 19px; margin: 26px 0 4px; color: var(--text); }
+  p, li { color: var(--text); }
+  ul { padding-left: 22px; }
+  li { margin: 4px 0; }
+  strong { color: #fff; }
+  figure { margin: 22px 0; }
+  figure img { width: 100%; height: auto; display: block; border: 1px solid var(--border); border-radius: var(--radius); background: var(--panel); }
+  figcaption { color: var(--muted); font-size: 13.5px; text-align: center; margin-top: 8px; }
+  kbd { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 13px; background: var(--panel-2);
+    border: 1px solid var(--border-bright); border-bottom-width: 2px; border-radius: 6px; padding: 2px 7px; color: #fff; white-space: nowrap; }
+  code { font-family: ui-monospace, Menlo, Consolas, monospace; background: var(--panel-2); padding: 1px 6px; border-radius: 5px; font-size: 14px; }
+  .callout { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 18px 0; color: var(--text-2); }
+  .callout strong { color: var(--accent); }
+  table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 15px; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-2); font-weight: 600; }
+  td:first-child { color: #fff; }
+  .footer { color: var(--muted); font-size: 13.5px; border-top: 1px solid var(--border); margin-top: 60px; padding-top: 20px; text-align: center; }
+  .menu-toggle { display: none; }
+  @media (max-width: 860px) {
+    .layout { flex-direction: column; }
+    .sidebar { position: static; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+    .sidebar nav { display: none; }
+    .sidebar nav.open { display: block; }
+    .menu-toggle { display: inline-block; background: var(--panel-2); color: var(--text); border: 1px solid var(--border-bright); border-radius: 6px; padding: 6px 12px; font-size: 14px; cursor: pointer; }
+    main { padding: 0 18px 80px; }
+    .hero h1 { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="./images/icon.png" alt="Luma">
+      <div><strong>Luma</strong><span>Gebruikershandleiding</span></div>
+    </div>
+    <select class="langsel" aria-label="Language" onchange="if(this.value)window.location.href=this.value">
+      <option value="index.html">English</option><option value="index.es.html">Español</option><option value="index.de.html">Deutsch</option><option value="index.fr.html">Français</option><option value="index.it.html">Italiano</option><option value="index.nl.html" selected>Nederlands</option><option value="index.pt.html">Português</option>
+    </select>
+    <button class="menu-toggle" onclick="document.getElementById('nav').classList.toggle('open')">☰ Secties</button>
+    <nav id="nav">
+      <a href="#intro"><span class="num">·</span>Wat is Luma</a>
+      <a href="#empezar"><span class="num">1</span>Aan de slag</a>
+      <a href="#proyectos"><span class="num">2</span>Projecten</a>
+      <a href="#ventana"><span class="num">3</span>Het hoofdvenster</a>
+      <a href="#barra"><span class="num">4</span>De bovenbalk</a>
+      <a href="#pistas"><span class="num">5</span>Tracklijst</a>
+      <a href="#canales"><span class="num">6</span>Kanalen</a>
+      <a href="#fx"><span class="num">7</span>Effecten</a>
+      <a href="#eq"><span class="num">8</span>Equalizer</a>
+      <a href="#region"><span class="num">9</span>Een track bijsnijden</a>
+      <a href="#presets"><span class="num">10</span>Presets (scènes)</a>
+      <a href="#flujos"><span class="num">11</span>Flows</a>
+      <a href="#salidas"><span class="num">12</span>Audio-uitgangen</a>
+      <a href="#mesa"><span class="num">13</span>Mixerinstellingen</a>
+      <a href="#preferencias"><span class="num">14</span>Voorkeuren</a>
+      <a href="#atajos"><span class="num">15</span>Sneltoetsen</a>
+    </nav>
+  </aside>
+
+  <main>
+  <div class="wrap">
+
+    <header class="hero">
+      <img src="./images/icon.png" alt="Luma">
+      <h1>Luma</h1>
+      <p>Een multitrack-audiomixer voor Linux. Speel veel tracks tegelijk af en regel elke track naar wens: volume, balans, fades, effecten en meer.</p>
+    </header>
+
+    <section id="intro">
+      <h2>Wat is Luma</h2>
+      <p>Luma is als een <strong>mengpaneel</strong> op je computer. Elke audiotrack (een liedje, een geluidseffect, een voice-over…) staat op een eigen <strong>kanaal</strong>, en jij bepaalt hoe die klinkt en wanneer: volume omhoog of omlaag, naar links of rechts, effecten toevoegen, laten in- of uitfaden, en naar de ene of de andere luidsprekers sturen.</p><p>Het is bedoeld voor live-evenementen, radio, theater, evenementen of elke situatie waarin je meerdere audio's betrouwbaar moet starten en mixen. Je hebt geen technische kennis nodig: deze gids leidt je stap voor stap.</p><figure class="shot"><img src="./images/main.png" alt="Overzicht van Luma met meerdere kanalen" loading="lazy"><figcaption>Het mengpaneel van Luma met meerdere kanalen.</figcaption></figure>
+    </section>
+
+    <section id="empezar">
+      <h2><span class="n">1</span>Aan de slag</h2>
+      <p>Wanneer je Luma voor het eerst opent, zie je het <strong>welkomstscherm</strong>. Hier kies je waaraan je werkt:</p><ul><li><strong>Nieuw project</strong>: maakt een leeg project. Geef het een naam en kies waar je het opslaat.</li><li><strong>Project openen</strong>: opent een project dat je al hebt.</li><li><strong>Recente projecten</strong>: snelle toegang tot wat je laatst opende. De ✕ op elke rij haalt het uit de lijst (met bevestiging; er wordt niets van je schijf verwijderd, alleen de snelkoppeling).</li><li><strong>Over</strong>: informatie over de app (versie, licentie).</li></ul><p>De volgende keer opent Luma automatisch het laatste project waaraan je werkte (aan te passen in <a href="#preferencias">Voorkeuren</a>).</p><figure class="shot"><img src="./images/welcome.png" alt="Welkomstscherm" loading="lazy"><figcaption>Het welkomstscherm: nieuw project, openen en recent.</figcaption></figure>
+    </section>
+
+    <section id="proyectos">
+      <h2><span class="n">2</span>Projecten</h2>
+      <p>Een <strong>project</strong> bevat al je werk: de tracks, de instellingen van elk kanaal, de presets en de flows. Elk project is een <strong>map</strong> die je zonder zorgen kunt kopiëren, verplaatsen of naar een andere computer meenemen.</p><div class="callout"><strong>Belangrijk:</strong> wanneer je een track toevoegt, bewaart Luma een <strong>kopie</strong> in het project. Zelfs als je het originele bestand verwijdert of verplaatst, blijft je project hetzelfde klinken. De map is op zichzelf staand en draagbaar.</div><p>Als je in je bestandsbeheerder dubbelklikt op een <code>.luma</code>-bestand, opent het direct in Luma.</p>
+    </section>
+
+    <section id="ventana">
+      <h2><span class="n">3</span>Het hoofdvenster</h2>
+      <p>Het scherm is verdeeld in drie zones:</p><ul><li><strong>Boven</strong>: de balk met het project, het algemene volume en de presets.</li><li><strong>Links</strong>: de tracklijst (boven) en de flowlijst (onder).</li><li><strong>Rechts</strong>: de kanalen, waar je mixt.</li></ul><div class="callout">Je kunt het <strong>venster verplaatsen</strong> door een leeg deel van de bovenbalk te slepen, en de grootte aanpassen via de randen.</div>
+    </section>
+
+    <section id="barra">
+      <h2><span class="n">4</span>De bovenbalk</h2>
+      <ul><li><strong>PROJECTS</strong>: sluit het huidige project en keert terug naar het welkomstscherm.</li><li><strong>MASTER</strong>: het <strong>algemene volume</strong> van de hele mix, met niveaumeter.</li><li><strong>PANIC</strong>: de noodknop. Stopt <strong>alle</strong> audio onmiddellijk.</li><li><strong>Opties</strong>: audio-uitgangen, aantal kanalen, herordenen, raster en voorkeuren.</li><li><strong>Preset</strong>-knoppen (P1…P10): schakel tussen je opgeslagen scènes.</li></ul><figure class="shot"><img src="./images/toolbar.png" alt="Bovenbalk van Luma" loading="lazy"><figcaption>De bovenbalk: project, MASTER, PANIC, opties en presets.</figcaption></figure>
+    </section>
+
+    <section id="pistas">
+      <h2><span class="n">5</span>Tracklijst</h2>
+      <p>Dit is de audiobibliotheek van je project (linksboven).</p><ul><li><strong>Bestanden toevoegen</strong>: importeer audio in WAV, MP3, OGG of FLAC. Ze worden automatisch alfabetisch gesorteerd.</li><li>Van elke track zie je <strong>naam</strong>, <strong>duur</strong>, <strong>formaat</strong> en in welke kanalen die wordt gebruikt.</li><li><strong>Een track gebruiken</strong>: sleep die naar een kanaal, of gebruik het menu en kies <em>Bind</em> om die toe te wijzen.</li><li>Het menu heeft ook <em>Remove</em> om die te verwijderen (met bevestiging; de kopie in het project wordt gewist).</li></ul><figure class="shot"><img src="./images/tracklist.png" alt="Tracklijst" loading="lazy"><figcaption>De tracklijst van het project.</figcaption></figure>
+    </section>
+
+    <section id="canales">
+      <h2><span class="n">6</span>Kanalen</h2>
+      <p>Elk kanaal is een kolom die één track afspeelt. Van boven naar beneden heb je:</p><ul><li><strong>Kleurbalk</strong> en <strong>naam</strong> (dubbelklik om te hernoemen). De kleur helpt kanalen in één oogopslag te herkennen.</li><li><strong>Balans</strong>: verplaatst het geluid naar links of rechts.</li><li><strong>Volume</strong>: de grote schuif, met niveaumeter. Er zijn twee markeringen die bepalen hoe ver fades omhoog of omlaag gaan.</li><li><strong>Fades</strong>: knoppen om de track soepel te laten verschijnen (fade in) of verdwijnen (fade out). Je stelt de duur in seconden en het curvetype in.</li><li><strong>AUX</strong>: stuurt dit kanaal naar de hulpuitgang in plaats van de hoofduitgang.</li><li><strong>Effecten</strong> en <strong>Equalizer</strong>: openen hun panelen (secties 7 en 8). Ze lichten op wanneer actief.</li><li><strong>Herhalen</strong>: speelt de track in een lus af.</li><li><strong>Afspelen / Pauze</strong> en <strong>Stoppen</strong>.</li><li><strong>Voortgangsbalk</strong>: toont waar de track is; klik erop om het af te spelen deel bij te snijden (sectie 9).</li></ul><div class="callout"><strong>Rechtsklik</strong> op een kanaal om snel de track toe te wijzen of te verwijderen en de kleur te wijzigen.</div><figure class="shot"><img src="./images/channels.png" alt="Kanalen met hun bedieningen" loading="lazy"><figcaption>De kanalen, met balans, volume, fades, effecten en transport.</figcaption></figure>
+    </section>
+
+    <section id="fx">
+      <h2><span class="n">7</span>Effecten</h2>
+      <p>Elk kanaal heeft vijf effecten die je apart kunt inschakelen. Elk onthoudt zijn waarden ook als het uit staat, en er is een knop om terug te keren naar de standaardwaarden.</p><table><tr><th>Effect</th><th>Waarvoor</th><th>Regelaars</th></tr><tr><td>Reverb</td><td>Geeft ruimtegevoel, alsof het in een zaal klinkt.</td><td>Ruimtegrootte, demping, mix</td></tr><tr><td>Delay</td><td>Maakt een herhalende echo.</td><td>Time (tot 1 s), feedback, mix</td></tr><tr><td>Distortion</td><td>Vervuilt en verzadigt het geluid.</td><td>Drive (1–50), mix</td></tr><tr><td>Pitch</td><td>Wijzigt de toonhoogte zonder de snelheid.</td><td>−12 tot +12 halve tonen</td></tr><tr><td>Speed</td><td>Wijzigt de snelheid zonder de toonhoogte.</td><td>0,5× tot 2×</td></tr></table><figure class="shot"><img src="./images/effects.png" alt="Effectenpaneel van een kanaal" loading="lazy"><figcaption>Effectenpaneel: Reverb, Delay, Distortion, Pitch en Speed.</figcaption></figure>
+    </section>
+
+    <section id="eq">
+      <h2><span class="n">8</span>Equalizer</h2>
+      <p>Met de equalizer kun je verschillende <strong>frequenties</strong> van het geluid versterken of verzwakken: de lage, midden- en hoge tonen. Hij heeft 10 banden (van 32&nbsp;Hz tot 16&nbsp;kHz), elk tot ±12&nbsp;dB.</p><p>Bijvoorbeeld: verlaag de laagste banden om gedreun te verwijderen, of verhoog de hoge voor meer helderheid.</p><figure class="shot"><img src="./images/equalizer.png" alt="Grafische 10-bands equalizer" loading="lazy"><figcaption>Grafische 10-bands equalizer.</figcaption></figure>
+    </section>
+
+    <section id="region">
+      <h2><span class="n">9</span>Een track bijsnijden</h2>
+      <p>Als je maar een deel van een track wilt afspelen, klik op de <strong>voortgangsbalk</strong>. Er opent een venster waarin je kunt:</p><ul><li>de totale <strong>duur</strong> en de huidige <strong>positie</strong> zien.</li><li>een <strong>begin</strong> en een <strong>einde</strong> instellen om alleen dat deel af te spelen.</li><li>de begin- of eindbijsnijding wissen, of de hele track herstellen.</li></ul><figure class="shot"><img src="./images/spectrum.png" alt="Golfvorm met bijsnijden van de regio" loading="lazy"><figcaption>De golfvorm van de track, met begin- en eindmarkeringen van de regio.</figcaption></figure>
+    </section>
+
+    <section id="presets">
+      <h2><span class="n">10</span>Presets (scènes)</h2>
+      <p>Een <strong>preset</strong> is een volledige momentopname van het hele paneel: welke track elk kanaal heeft, de volumes, effecten, kleuren… Je hebt <strong>10 presets</strong> (P1 tot P10) per project.</p><p>Ze zijn handig om verschillende momenten van een evenement voor te bereiden. Bijvoorbeeld: P1 voor de inloop, P2 voor het hoofdgedeelte, P3 voor de afsluiting. Je schakelt met één klik.</p><div class="callout">Bij het wisselen van preset <strong>stopt het huidige afspelen</strong> (met bevestiging) en Luma <strong>bewaart automatisch</strong> de staat van de preset die je verlaat, zodat je niets verliest.</div><figure class="shot"><img src="./images/presets.png" alt="Preset-knoppen P1 tot P10" loading="lazy"><figcaption>De 10 preset-knoppen.</figcaption></figure>
+    </section>
+
+    <section id="flujos">
+      <h2><span class="n">11</span>Flows</h2>
+      <p><strong>Flows</strong> automatiseren het afspelen: in plaats van elke track met de hand te starten, definieer je een reeks en voert Luma die voor je uit. Ideaal om audio's met soepele overgangen aaneen te schakelen.</p><h3>Een flow maken</h3><p>Druk in de flowlijst (linksonder) op <strong>New flow</strong>. Er opent een editor met een <strong>canvas</strong> waarop je de reeks als een kleine kaart opbouwt:</p><ul><li><strong>Stappen toevoegen</strong>: klik op een kanaal in de lijst om het als „knooppunt” op het canvas te zetten. Hetzelfde kanaal mag meerdere keren voorkomen.</li><li><strong>Verbinden</strong>: sleep vanaf het uitgangspunt van een knooppunt naar het volgende om ze te koppelen. Het punt <strong>START</strong> markeert het begin.</li><li><strong>Over het canvas bewegen</strong>: sleep de achtergrond of gebruik het wiel; <kbd>Ctrl</kbd> + wiel om te zoomen.</li></ul><figure class="shot"><img src="./images/flow_config.png" alt="Flow-editor met gekoppelde knooppunten" loading="lazy"><figcaption>De flow-editor: elk knooppunt is een kanaal en de pijlen zijn de koppelingen.</figcaption></figure><h3>Elke stap instellen</h3><p>Dubbelklik op een knooppunt om te bepalen <strong>hoe dat kanaal moet klinken</strong> wanneer de flow het activeert (volume, fade, lus, startpunt, effecten…).</p><p>Klik op een koppeling om te bepalen <strong>wanneer</strong> het naar de volgende stap gaat en wat er gebeurt:</p><ul><li><strong>Trigger</strong>: meteen, na enkele seconden, of wanneer de vorige track eindigt.</li><li><strong>Bij de oorsprong</strong>: niets doen, fade out of stoppen.</li><li><strong>Bij het doel</strong>: direct afspelen of binnenkomen met een fade in.</li></ul><figure class="shot"><img src="./images/flow_node.png" alt="Instellen van een flow-knooppunt" loading="lazy"><figcaption>Elke stap van de flow heeft zijn eigen instellingen.</figcaption></figure><h3>Uitvoeren</h3><p>Druk op <strong>Run</strong> om de flow te starten. De betrokken kanalen tonen een <strong>knipperende rand</strong> zodat je ze herkent, en je kunt het paneel blijven bedienen tijdens het uitvoeren. De flow eindigt vanzelf, met <strong>Stop</strong> of met <strong>PANIC</strong>; daarna keren de kanalen terug naar hun vorige staat.</p>
+    </section>
+
+    <section id="salidas">
+      <h2><span class="n">12</span>Audio-uitgangen</h2>
+      <p>Luma kan het geluid naar <strong>twee verschillende uitgangen</strong> sturen:</p><ul><li><strong>Main</strong>: waar de meeste kanalen heen gaan.</li><li><strong>Aux</strong>: waar de kanalen met de <strong>AUX</strong>-knop ingeschakeld heen gaan.</li></ul><p>In het uitgangenvenster kies je welk apparaat elke uitgang gebruikt (bijvoorbeeld luidsprekers voor het publiek en een koptelefoon voor jou), of laat je het standaardapparaat van het systeem.</p><figure class="shot"><img src="./images/devices.png" alt="Venster van de audio-uitgangen" loading="lazy"><figcaption>Kies het apparaat voor de hoofd- en de hulpuitgang.</figcaption></figure>
+    </section>
+
+    <section id="mesa">
+      <h2><span class="n">13</span>Mixerinstellingen</h2>
+      <ul><li><strong>Aantal kanalen</strong>: kies hoeveel kanalen je wilt (1 tot 40). Als je het aantal verlaagt, word je gewaarschuwd dat de configuratie van de laatste verloren gaat.</li><li><strong>Kanalen herordenen</strong>: schakelt een modus in om de volgorde van de kanalen te wijzigen.</li><li><strong>Rastermodus</strong>: plaatst de kanalen in twee rijen, handig bij veel kanalen.</li></ul><figure class="shot"><img src="./images/grid_mode.png" alt="Rastermodus" loading="lazy"><figcaption>De rastermodus plaatst de kanalen in twee rijen.</figcaption></figure>
+    </section>
+
+    <section id="preferencias">
+      <h2><span class="n">14</span>Voorkeuren</h2>
+      <ul><li><strong>Laatste project openen bij opstarten</strong>: schakelt in of Luma je werk automatisch hervat.</li><li><strong>Taal</strong>: wijzigt de taal van de interface (toegepast na herstart). Beschikbaar in het Engels, Spaans, Frans, Duits, Italiaans, Portugees en Nederlands.</li><li><strong>Grootte van de audiocache</strong> en <strong>cache opnieuw opwarmen</strong>: prestatie-instellingen zodat tracks zonder vertraging afspelen.</li><li><strong>Sneltoetsen</strong>: je kunt elke sneltoets opnieuw toewijzen. Druk op de knop en daarna op de gewenste toetscombinatie.</li></ul><figure class="shot"><img src="./images/preferences.png" alt="Voorkeurenvenster" loading="lazy"><figcaption>Het voorkeurenvenster: opstarten, taal, cache en sneltoetsen.</figcaption></figure>
+    </section>
+
+    <section id="atajos">
+      <h2><span class="n">15</span>Sneltoetsen</h2>
+      <p>Standaardwaarden (aan te passen in Voorkeuren):</p><table><tr><th>Actie</th><th>Sneltoets</th></tr><tr><td>Nieuw project</td><td><kbd>Ctrl</kbd> + <kbd>N</kbd></td></tr><tr><td>Project openen</td><td><kbd>Ctrl</kbd> + <kbd>O</kbd></td></tr><tr><td>Track aan lijst toevoegen</td><td><kbd>Ctrl</kbd> + <kbd>T</kbd></td></tr><tr><td>Nieuwe flow</td><td><kbd>Ctrl</kbd> + <kbd>F</kbd></td></tr><tr><td>Audio-uitgangen</td><td><kbd>Ctrl</kbd> + <kbd>D</kbd></td></tr><tr><td>Aantal kanalen</td><td><kbd>Ctrl</kbd> + <kbd>H</kbd></td></tr><tr><td>Kanalen herordenen</td><td><kbd>Ctrl</kbd> + <kbd>R</kbd></td></tr><tr><td>Rastermodus</td><td><kbd>Ctrl</kbd> + <kbd>G</kbd></td></tr><tr><td>Master naar minimum</td><td><kbd>Ctrl</kbd> + <kbd>M</kbd></td></tr><tr><td>Panic (alles stoppen)</td><td><kbd>Ctrl</kbd> + <kbd>K</kbd></td></tr><tr><td>Voorkeuren</td><td><kbd>Ctrl</kbd> + <kbd>P</kbd></td></tr><tr><td>Preset 1…10 kiezen</td><td><kbd>F1</kbd> … <kbd>F10</kbd></td></tr></table>
+    </section>
+
+    <div class="footer">Luma · Gebruikershandleiding · Licentie GPL-3.0-or-later</div>
+
+  </div>
+  </main>
+</div>
+</body>
+</html>
