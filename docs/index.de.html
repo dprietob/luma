@@ -4,6 +4,40 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Luma – Benutzerhandbuch</title>
+<meta name="description" content="Ein Mehrspur-Audiomischer für Linux. Spiele viele Spuren gleichzeitig ab und steuere jede nach deinen Wünschen: Lautstärke, Balance, Fades, Effekte und mehr.">
+<meta name="author" content="Luma">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#080808">
+<link rel="icon" type="image/png" href="./images/icon.png">
+<link rel="apple-touch-icon" href="./images/icon.png">
+<link rel="canonical" href="https://dprietob.github.io/luma/index.de.html">
+<link rel="alternate" hreflang="en" href="https://dprietob.github.io/luma/index.html">
+<link rel="alternate" hreflang="es" href="https://dprietob.github.io/luma/index.es.html">
+<link rel="alternate" hreflang="de" href="https://dprietob.github.io/luma/index.de.html">
+<link rel="alternate" hreflang="fr" href="https://dprietob.github.io/luma/index.fr.html">
+<link rel="alternate" hreflang="it" href="https://dprietob.github.io/luma/index.it.html">
+<link rel="alternate" hreflang="nl" href="https://dprietob.github.io/luma/index.nl.html">
+<link rel="alternate" hreflang="pt" href="https://dprietob.github.io/luma/index.pt.html">
+<link rel="alternate" hreflang="x-default" href="https://dprietob.github.io/luma/index.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Luma">
+<meta property="og:title" content="Luma – Benutzerhandbuch">
+<meta property="og:description" content="Ein Mehrspur-Audiomischer für Linux. Spiele viele Spuren gleichzeitig ab und steuere jede nach deinen Wünschen: Lautstärke, Balance, Fades, Effekte und mehr.">
+<meta property="og:url" content="https://dprietob.github.io/luma/index.de.html">
+<meta property="og:image" content="https://dprietob.github.io/luma/images/main.png">
+<meta property="og:image:alt" content="Luma">
+<meta property="og:locale" content="de_DE">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="it_IT">
+<meta property="og:locale:alternate" content="nl_NL">
+<meta property="og:locale:alternate" content="pt_PT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Luma – Benutzerhandbuch">
+<meta name="twitter:description" content="Ein Mehrspur-Audiomischer für Linux. Spiele viele Spuren gleichzeitig ab und steuere jede nach deinen Wünschen: Lautstärke, Balance, Fades, Effekte und mehr.">
+<meta name="twitter:image" content="https://dprietob.github.io/luma/images/main.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Luma","operatingSystem":"Linux","applicationCategory":"MultimediaApplication","description":"Ein Mehrspur-Audiomischer für Linux. Spiele viele Spuren gleichzeitig ab und steuere jede nach deinen Wünschen: Lautstärke, Balance, Fades, Effekte und mehr.","softwareVersion":"1.0.0","url":"https://flathub.org/apps/io.github.dprietob.luma","image":"https://dprietob.github.io/luma/images/main.png","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://www.gnu.org/licenses/gpl-3.0.html"}</script>
 <style>
   :root {
     --bg: #080808; --panel: #151515; --panel-2: #1c1c1c; --border: #2a2a2a;
@@ -36,6 +70,10 @@
   .hero img { width: 120px; height: 120px; border-radius: 22px; }
   .hero h1 { font-size: 40px; margin: 18px 0 6px; letter-spacing: 1px; }
   .hero p { color: var(--text-2); font-size: 19px; margin: 0 auto; max-width: 620px; }
+  .herolinks { display: flex; justify-content: center; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+  .herolinks a { display: inline-flex; align-items: center; padding: 9px 22px; border: 1px solid var(--border-bright);
+    border-radius: 8px; color: var(--text); font-size: 15px; font-weight: 600; }
+  .herolinks a:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); text-decoration: none; }
   section { padding-top: 28px; margin-top: 8px; }
   h2 { font-size: 26px; margin: 34px 0 6px; padding-bottom: 8px; border-bottom: 2px solid var(--accent); display: inline-block; }
   h2 .n { color: var(--accent); margin-right: 10px; }
@@ -45,7 +83,7 @@
   li { margin: 4px 0; }
   strong { color: #fff; }
   figure { margin: 22px 0; }
-  figure img { width: 100%; height: auto; display: block; border: 1px solid var(--border); border-radius: var(--radius); background: var(--panel); }
+  figure img { max-width: 100%; height: auto; display: block; margin: 0 auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--panel); }
   figcaption { color: var(--muted); font-size: 13.5px; text-align: center; margin-top: 8px; }
   kbd { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 13px; background: var(--panel-2);
     border: 1px solid var(--border-bright); border-bottom-width: 2px; border-radius: 6px; padding: 2px 7px; color: #fff; white-space: nowrap; }
@@ -66,6 +104,19 @@
     .menu-toggle { display: inline-block; background: var(--panel-2); color: var(--text); border: 1px solid var(--border-bright); border-radius: 6px; padding: 6px 12px; font-size: 14px; cursor: pointer; }
     main { padding: 0 18px 80px; }
     .hero h1 { font-size: 32px; }
+  }
+  img { max-width: 100%; }
+  td, th { overflow-wrap: anywhere; }
+  @media (max-width: 520px) {
+    body { font-size: 16px; }
+    main { padding: 0 14px 70px; }
+    .hero { padding: 40px 0 28px; }
+    .hero img { width: 96px; height: 96px; }
+    .hero h1 { font-size: 28px; }
+    .hero p { font-size: 17px; }
+    h2 { font-size: 21px; }
+    h3 { font-size: 17px; }
+    th, td { padding: 7px 8px; font-size: 14px; }
   }
 </style>
 </head>
@@ -107,6 +158,10 @@
       <img src="./images/icon.png" alt="Luma">
       <h1>Luma</h1>
       <p>Ein Mehrspur-Audiomischer für Linux. Spiele viele Spuren gleichzeitig ab und steuere jede nach deinen Wünschen: Lautstärke, Balance, Fades, Effekte und mehr.</p>
+      <div class="herolinks">
+        <a href="https://github.com/dprietob/luma" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://flathub.org/apps/io.github.dprietob.luma" target="_blank" rel="noopener">Flathub</a>
+      </div>
     </header>
 
     <section id="intro">
