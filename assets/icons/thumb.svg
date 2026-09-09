@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="37" viewBox="0 0 22 37">
+  <defs>
+    <linearGradient id="thumb-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#383838"/>
+      <stop offset="4%" stop-color="#636363"/>
+      <stop offset="11%" stop-color="#383838"/>
+      <stop offset="26%" stop-color="#3d3d3d"/>
+      <stop offset="31%" stop-color="#262626"/>
+      <stop offset="35%" stop-color="#424242"/>
+      <stop offset="44%" stop-color="#474747"/>
+      <stop offset="47%" stop-color="#eb6a00"/>
+      <stop offset="54%" stop-color="#eb6a00"/>
+      <stop offset="57%" stop-color="#474747"/>
+      <stop offset="67%" stop-color="#414141"/>
+      <stop offset="71%" stop-color="#262626"/>
+      <stop offset="75%" stop-color="#3d3d3d"/>
+      <stop offset="87%" stop-color="#383838"/>
+      <stop offset="96%" stop-color="#636363"/>
+      <stop offset="100%" stop-color="#383838"/>
+    </linearGradient>
+  </defs>
+  <rect width="22" height="37" rx="3" fill="#000"/>
+  <rect x="1" y="1" width="20" height="35" rx="2" fill="url(#thumb-gradient)"/>
+</svg>

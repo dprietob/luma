@@ -1,0 +1,102 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (C) 2025 Luma Contributors
+#
+# Entorno de compilación del AppImage portable.
+#
+# El AppImage empaqueta sus dependencias pero NO la glibc, así que la distro base
+# fija la versión mínima de glibc en la que podrá ejecutarse. Ninguna distro con
+# glibc antigua trae Qt >= 6.8 (requisito de Luma), por lo que la base es Ubuntu
+# 22.04 (glibc 2.35) y Qt se instala desde los binarios oficiales de Qt con
+# aqtinstall. El AppImage resultante funciona en Ubuntu 22.04+, Debian 12+,
+# Fedora 36+ y Arch.
+
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Toolchain, dependencias de audio y las librerías de sistema contra las que se
+# enlazan los plugins de Qt (linuxdeploy solo puede empaquetar lo que existe).
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        build-essential \
+        cmake \
+        ninja-build \
+        pkg-config \
+        ca-certificates \
+        curl \
+        file \
+        python3-pip \
+        desktop-file-utils \
+        libglib2.0-bin \
+        libasound2-dev \
+        libsndfile1-dev \
+        libmpg123-dev \
+        libsoundtouch-dev \
+        libgl1-mesa-dev \
+        libegl1 \
+        libfontconfig1 \
+        libfreetype6 \
+        libdbus-1-3 \
+        libxkbcommon-x11-0 \
+        libxcb-cursor0 \
+        libxcb-icccm4 \
+        libxcb-image0 \
+        libxcb-keysyms1 \
+        libxcb-randr0 \
+        libxcb-render-util0 \
+        libxcb-shape0 \
+        libxcb-sync1 \
+        libxcb-xfixes0 \
+        libxcb-xinerama0 \
+        libxcb-xkb1 \
+        libwayland-client0 \
+        libwayland-cursor0 \
+        libwayland-egl1 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Qt oficial (no el de la distro, que es 6.2). La instalación base ya trae
+# qtdeclarative (Qt Quick, Controls, Dialogs), qtsvg (plugin de imagen de los
+# iconos), qttools (lconvert/lrelease para las traducciones) y qtwayland;
+# qtshadertools sí es un módulo aparte y lo requiere qt_add_qml_module.
+ARG QT_VERSION=6.8.3
+RUN pip3 install --no-cache-dir "aqtinstall==3.1.*" \
+    && aqt install-qt linux desktop "${QT_VERSION}" linux_gcc_64 \
+        -m qtshadertools \
+        -O /opt/qt \
+    && rm -rf /root/.cache
+
+# PortAudio se compila desde fuentes con ALSA y SIN JACK: el libportaudio2 de la
+# distro se enlaza contra libjack, que la excludelist de AppImage no permite
+# empaquetar (va ligada al servidor JACK del host) y que la mayoría de los
+# escritorios no tienen instalada, así que el AppImage no arrancaría. Con ALSA
+# basta: PipeWire y PulseAudio exponen su propio dispositivo ALSA.
+ARG PORTAUDIO_VERSION=19.7.0
+RUN curl -fL --retry 3 -o /tmp/portaudio.tar.gz \
+        "https://github.com/PortAudio/portaudio/archive/refs/tags/v${PORTAUDIO_VERSION}.tar.gz" \
+    && tar -C /tmp -xf /tmp/portaudio.tar.gz \
+    && cmake -S "/tmp/portaudio-${PORTAUDIO_VERSION}" -B /tmp/portaudio-build \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr/local \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+        -DPA_BUILD_SHARED=ON \
+        -DPA_BUILD_STATIC=OFF \
+        -DPA_USE_ALSA=ON \
+        -DPA_USE_JACK=OFF \
+        -DPA_USE_OSS=OFF \
+    && cmake --build /tmp/portaudio-build \
+    && cmake --install /tmp/portaudio-build \
+    && ldconfig \
+    && rm -rf /tmp/portaudio*
+
+ENV QT_ROOT=/opt/qt/6.8.3/gcc_64
+ENV PATH=${QT_ROOT}/bin:${PATH}
+ENV CMAKE_PREFIX_PATH=${QT_ROOT}
+ENV LD_LIBRARY_PATH=${QT_ROOT}/lib
+
+# Las herramientas de despliegue se hornean en la imagen para no descargarlas en
+# cada ejecución; build-appimage.sh las busca en LUMA_TOOLS_DIR.
+ARG TARGET_ARCH=x86_64
+RUN mkdir -p /opt/appimage-tools && cd /opt/appimage-tools \
+    && curl -fL --retry 3 -O "https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-${TARGET_ARCH}.AppImage" \
+    && curl -fL --retry 3 -O "https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-${TARGET_ARCH}.AppImage" \
+    && curl -fL --retry 3 -O "https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-${TARGET_ARCH}.AppImage" \
+    && chmod +x ./*.AppImage

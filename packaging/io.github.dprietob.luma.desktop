@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Luma
+GenericName=Audio Mixer
+Comment=Real-time multitrack audio mixer
+Comment[es]=Mezclador de audio multipista en tiempo real
+Exec=luma %f
+Icon=io.github.dprietob.luma
+Terminal=false
+Categories=AudioVideo;Audio;Mixer;
+Keywords=audio;mixer;multitrack;playback;
+Keywords[es]=audio;mezclador;multipista;reproducción;
+MimeType=application/x-luma;
+StartupWMClass=luma

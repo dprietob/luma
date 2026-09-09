@@ -1,0 +1,29 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (C) 2025 Luma Contributors
+#
+# Entorno de compilación del .rpm.
+#
+# El registro de tipos QML enlaza contra la API privada de Qt, así que el rpm
+# resultante declara una dependencia de la versión exacta de Qt de la distro y
+# solo instala en la release de Fedora en la que se compiló. Se genera un paquete
+# por release: FEDORA_VERSION=43 ./packaging/build-packages.sh rpm
+
+ARG FEDORA_VERSION=44
+FROM fedora:${FEDORA_VERSION}
+
+RUN dnf install -y \
+        gcc-c++ \
+        cmake \
+        ninja-build \
+        pkgconf-pkg-config \
+        rpm-build \
+        qt6-qtbase-devel \
+        qt6-qtdeclarative-devel \
+        qt6-qtshadertools \
+        qt6-linguist \
+        qt6-qtsvg \
+        portaudio-devel \
+        libsndfile-devel \
+        mpg123-devel \
+        soundtouch-devel \
+    && dnf clean all

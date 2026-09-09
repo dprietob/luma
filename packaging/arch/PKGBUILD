@@ -1,0 +1,33 @@
+# Maintainer: Daniel Prieto <https://github.com/dprietob>
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+pkgname=luma
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Real-time multitrack audio mixer"
+arch=('x86_64')
+url="https://github.com/dprietob/luma"
+license=('GPL-3.0-or-later')
+depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'portaudio' 'libsndfile' 'mpg123'
+         'soundtouch' 'hicolor-icon-theme')
+makedepends=('cmake' 'ninja' 'qt6-tools' 'qt6-shadertools')
+optdepends=('pipewire-pulse: audio output through PipeWire'
+            'pulseaudio: audio output through PulseAudio')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('b46200fefd5491c4b0108b52ec9f25c6f89a3ecb08bbb634757ebcb9b91e6fdd')
+
+build() {
+    cmake -S "${pkgname}-${pkgver}" -B build -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DLUMA_BUILD_TESTS=ON
+    cmake --build build
+}
+
+check() {
+    QT_QPA_PLATFORM=offscreen ctest --test-dir build --output-on-failure
+}
+
+package() {
+    DESTDIR="${pkgdir}" cmake --install build
+}
