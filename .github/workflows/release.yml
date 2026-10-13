@@ -1,0 +1,80 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (C) 2025 Luma Contributors
+#
+# Genera los binarios distribuibles de cada tag de versión y los publica en la
+# GitHub Release correspondiente. Reutiliza los mismos contenedores que el
+# empaquetado local (packaging/build-packages.sh), de modo que lo que se publica
+# se construye exactamente igual que en una máquina de desarrollo.
+
+name: Release
+
+on:
+  push:
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build ${{ matrix.id }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: deb
+            id: deb-trixie
+            settings: DEBIAN_SUITE=trixie
+          - target: rpm
+            id: rpm-fc43
+            settings: FEDORA_VERSION=43
+          - target: rpm
+            id: rpm-fc44
+            settings: FEDORA_VERSION=44
+          - target: appimage
+            id: appimage
+            settings: ""
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build package
+        run: env ${{ matrix.settings }} ./packaging/build-packages.sh ${{ matrix.target }}
+        env:
+          ENGINE: docker
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: luma-${{ matrix.id }}
+          path: dist/*
+          if-no-files-found: error
+
+  publish:
+    name: Publish release
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          pattern: luma-*
+          merge-multiple: true
+
+      - name: Generate checksums
+        run: cd dist && sha256sum * > SHA256SUMS && cat SHA256SUMS
+
+      - name: Upload to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+          REPO: ${{ github.repository }}
+        run: |
+          if gh release view "${TAG}" --repo "${REPO}" > /dev/null 2>&1; then
+              gh release upload "${TAG}" --repo "${REPO}" --clobber dist/*
+          else
+              gh release create "${TAG}" --repo "${REPO}" \
+                  --title "Luma ${TAG}" --generate-notes dist/*
+          fi
